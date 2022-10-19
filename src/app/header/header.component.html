@@ -1,4 +1,4 @@
-<p>
+<p *ngIf="isLoggedIn$ | async as isLoggedIn">
     <mat-toolbar color="primary">
         <button mat-icon-button class="example-icon" aria-label="Example icon-button with menu icon">
             <mat-icon>menu</mat-icon>
@@ -8,7 +8,8 @@
         <button mat-icon-button class="example-icon favorite-icon" aria-label="Example icon-button with heart icon">
             <mat-icon>favorite</mat-icon>
         </button>
-        <button mat-icon-button class="example-icon" aria-label="Example icon-button with logout icon">
+        <button mat-icon-button class="example-icon" aria-label="Example icon-button with logout icon"
+            *ngIf="isLoggedIn$ | async" (click)="handleLogoutClick()">
             <mat-icon>power_settings_new</mat-icon>
         </button>
     </mat-toolbar>
