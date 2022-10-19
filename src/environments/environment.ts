@@ -4,7 +4,8 @@
 
 export const environment = {
   production: false,
-  baseUrl: "http://127.0.0.1:2000/quiz/api/"
+  // baseUrl: "http://127.0.0.1:2000/quiz/api/"
+  baseUrl: "https://nice-tan-jay-veil.cyclic.app/quiz/api/"
 };
 
 /*
