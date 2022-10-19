@@ -1,0 +1,68 @@
+<div class="container">
+
+    <div *ngIf="!isContentAvailable;then empty_content else content"></div>
+
+    <ng-template #empty_content>
+        <div class="text-center mb-3">
+            <h2>Podcast</h2>
+        </div>
+        <div class="text-center mt-5">
+            <img src="assets/images/empty-podcast.png" height="250" class="img" alt="No podcast">
+            <h2 class="mt-5">No Podcasts yet</h2>
+        </div>
+    </ng-template>
+
+    <ng-template #content>
+        <div class="mt-5 p-3 bg-danger text-white rounded outer">
+            <p>Your</p>
+            <h1><strong>Podcasts</strong></h1>
+            <img src="assets/images/podcast-image.png" height="100" class="rounded-circle" alt="Podcast image">
+        </div>
+        <br>
+        <div class="mt-5">
+            <p class="mt-5">
+                Listen to all our podcasts on our
+                <a target="_blank" href="https://businesswithher23.wixsite.com/businesswithher/podcast">official
+                    website</a>
+            </p>
+            <!-- <a mat-raised-button class="mt-4" color="accent" target="_blank" *ngIf="userInfo?.role === 2"
+                href="https://businesswithher23.wixsite.com/businesswithher/podcast">Visit</a> -->
+
+            <!-- Podcast list -->
+            <div class="mb-3" *ngIf="userInfo?.role === 2">
+                <div class="card mb-3" *ngFor="let podcast of podcasts$">
+                    <div class="row">
+                        <div class="col-8">
+                            <strong>
+                                {{podcast?.message | ellipsis: 60}}
+                            </strong>
+                        </div>
+                        <div class="col-4">
+                            <span>{{podcast?.createdAt | date: 'dd-MM-yyyy'}}</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- Podcast list -->
+        </div>
+        <div class="mt-5 text-center">
+            <a mat-raised-button color="accent" routerLink="../add-podcast" *ngIf="userInfo?.role === 1">Create a Podcast</a>
+            <!-- <a mat-raised-button color="primary" accessControl moduleType="podcasts"
+                accessType="create_action" (click)="handleInformClick()">Inform</a> -->
+        </div>
+    </ng-template>
+</div>
+
+<!-- <div *ngFor="let item of feed?.items" class="mb-3">
+    <div class="d-flex justify-content-between mb-2">
+        <strong class="wrap-text">
+            {{item?.title}}
+        </strong>
+        <span>{{item?.pubDate | date: 'dd-MM-yyyy'}}</span>
+    </div>
+    <audio id="player" controls>
+        <source id="player-source" src="{{item?.enclosure?.link}}" type="audio/mpeg">
+        Your browser does not support the audio element.
+    </audio>
+    <span>{{secondsToMinutes(item?.enclosure?.duration)}}</span>
+</div> -->

@@ -1,0 +1,19 @@
+<div class="container mt-4">
+    <div class="card grey-card mb-3 pt-0">
+        <div class="card-body">
+            <h2 class="mb-3"><strong>{{article$?.title}}</strong></h2>
+            <img [src]="article$?.imagePath" height="200" width="100%" alt="Article cover photo"
+                *ngIf="article$?.imagePath; else no_article_image">
+            <ng-template #no_article_image>
+                <img src="assets/images/article.jpg" height="200" alt="Article">
+            </ng-template>
+            <p class="text-secondary d-flex justify-content-between mt-3">
+                <span>{{article$?.createdBy?.name?.firstName}} {{article$?.createdBy?.name?.lastName}}</span>
+                <span>{{article$?.createdAt | date: 'dd-MM-yyyy'}}</span>
+            </p>
+            <p class="mt-5">
+                {{article$?.description}}
+            </p>
+        </div>
+    </div>
+</div>

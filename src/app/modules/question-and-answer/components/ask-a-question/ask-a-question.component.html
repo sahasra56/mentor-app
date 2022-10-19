@@ -1,0 +1,21 @@
+<div class="container text-center">
+    <h2>Ask A Question</h2>
+
+    <form class="mt-4" [formGroup]="questionForm" (ngSubmit)="handleSaveQuestion()">
+        <mat-form-field class="example-form-field mt-2" appearance="fill">
+            <mat-label>Question Title</mat-label>
+            <input matInput type="text" formControlName="title">
+        </mat-form-field>
+
+        <mat-form-field class="example-form-field mt-2" appearance="fill">
+            <mat-label>Question Description</mat-label>
+            <textarea matInput type="text" formControlName="description" rows="10"></textarea>
+        </mat-form-field>
+
+        <button mat-raised-button type="submit" color="accent" class="full-width large-button"
+            [disabled]="questionForm.invalid || isLoading">Save</button>
+
+        <button mat-raised-button type="button" class="full-width large-button mt-3"
+            routerLink="../../question-and-answer">Cancel</button>
+    </form>
+</div>

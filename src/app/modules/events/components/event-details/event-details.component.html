@@ -1,0 +1,12 @@
+<div class="container justify-content-center">
+    <h2 class="text-center">Event Details</h2>
+    <div class="card">
+        <h5><strong>{{eventDetails$?.title}}</strong></h5>
+        <p>{{eventDetails$?.description}}</p>
+        <p>{{eventDetails$?.eventDate | date: 'MM-dd-yyyy'}}</p>
+    </div>
+    <div class="text-center">
+        <button mat-raised-button type="button" color="accent" class="full-width large-button mt-4" (click)="handleMarkAsComplete()"> Mark As
+            Complete </button>
+    </div>
+</div>

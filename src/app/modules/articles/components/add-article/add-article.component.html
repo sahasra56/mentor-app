@@ -1,0 +1,18 @@
+<div class="container text-center">
+    <h2>Add Article</h2>
+
+    <form class="mt-4" [formGroup]="articleForm" (ngSubmit)="handleSaveArticle()">
+        <mat-form-field class="example-form-field mt-2" appearance="fill">
+            <mat-label>Article Title</mat-label>
+            <input matInput type="text" formControlName="title">
+        </mat-form-field>
+
+        <mat-form-field class="example-form-field mt-2" appearance="fill">
+            <mat-label>Article Description</mat-label>
+            <textarea matInput type="text" formControlName="description" rows="10"></textarea>
+        </mat-form-field>
+
+        <button mat-raised-button color="accent" class="full-width large-button"
+            [disabled]="articleForm.invalid || isLoading">Save</button>
+    </form>
+</div>

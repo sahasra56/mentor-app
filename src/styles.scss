@@ -1,1 +1,87 @@
 /* You can add global styles to this file, and also import other style files */
+
+/* You can add global styles to this file, and also import other style files */
+
+/* You can add global styles to this file, and also import other style files */
+
+@import "~bootstrap/dist/css/bootstrap.css";
+
+html,
+body {
+    height: 100%;
+    max-width: 100%;
+    overflow-y: hidden;
+}
+
+body {
+    margin: 0;
+    font-family: 'Noto Sans', sans-serif;
+}
+
+*:not(i):not(.fa):not(.fas):not(mat-icon) {
+    font-family: 'Noto Sans', sans-serif;
+}
+
+mat-form-field {
+    width: 100%;
+}
+
+.scrolling-wrapper {
+    overflow-x: auto;
+}
+
+.card {
+    padding: 1rem;
+    border-radius: 10px;
+    background-color: inherit !important;
+    // border-color: gainsboro;
+    box-shadow: 0 4px 8px 0 rgba(199, 192, 192, 0.2);
+    // box-shadow: rgba(0, 0, 0, 0.1) 0px 4px 12px;
+    // box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+    transition: 0.3s;
+}
+
+.grey-card {
+    background-color: #F8F9FA !important;
+    box-shadow: 0 4px 8px 0 #F8F9FA;
+}
+
+.dark-grey-card {
+    background-color: #DEE1E6 !important;
+    box-shadow: none;
+    border-color: #DEE1E6;
+}
+
+.icon-with-text {
+    font-size: 24px;
+    vertical-align: middle;
+}
+
+.floating-button-right {
+    position: fixed;
+    bottom: 100px;
+    right: 16px;
+    z-index: 100;
+}
+
+/* On mouse-over, add a deeper shadow */
+.card-hover {
+    box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.2);
+}
+
+.full-width {
+    width: 100%;
+}
+
+.large-button {
+    height: 3.2em;
+    font-size: medium;
+}
+
+.dot {
+    height: 10px;
+    width: 10px;
+    background-color: #bbb;
+    border-radius: 50%;
+    display: inline-block;
+}

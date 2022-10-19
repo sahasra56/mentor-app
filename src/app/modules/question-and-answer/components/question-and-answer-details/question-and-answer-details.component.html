@@ -1,0 +1,40 @@
+<div class="container mt-3">
+    <div class="row">
+        <div class="col-2 pt-1">
+            <img src="assets/images/user.png" alt="User icon">
+        </div>
+        <div class="col-10 text-start">
+            <strong>{{question$?.createdBy?.name?.firstName}} {{question$?.createdBy?.name?.lastName}}</strong>
+            <br>
+            <span>{{question$?.createdAt | date: 'MM-dd-yyyy'}}</span>
+        </div>
+    </div>
+
+    <h3><strong>{{question$?.title}}</strong></h3>
+
+    <div class="answer-div mt-4">
+
+        <div *ngIf="question$?.answers!.length > 0; then answer_list else no_answers"></div>
+
+        <ng-template #no_answers>
+            <div class="alert alert-warning">
+                <h5>Do not have any answers to this question yet</h5>
+            </div>
+        </ng-template>
+        
+        <ng-template #answer_list>
+            <div class="card dark-grey-card p-3 mb-3" *ngFor="let answer of question$?.answers">
+                <strong>{{answer?.answeredBy?.name?.firstName}} {{answer?.answeredBy?.name?.lastName}} | {{answer?.answeredOn | date: 'MM-dd-yyyy'}}</strong>
+                <p class="mt-2">{{answer?.description}}</p>
+            </div>
+        </ng-template>
+
+        <div>
+            <mat-form-field class="example-form-field mt-2" appearance="fill">
+                <textarea matInput type="text" name="answer" id="answer" placeholder="Express your thoughts" [formControl]="answer"></textarea>
+            </mat-form-field>
+            <button mat-raised-button color="accent" (click)="handleSubmitAnswer()" class="full-width large-button"
+                [disabled]="!answer.value">Submit</button>
+        </div>
+    </div>
+</div>
