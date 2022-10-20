@@ -1,16 +1,17 @@
 <div class="container" style="height: 100%">
   <div class="d-flex align-items-center justify-content-between" style="height: 100%">
     <div class="row">
-      <div class="col-sm-6 mt-5">
+      <div class="col-sm-4 mt-5">
         <div>
           <h2>Welcome, {{userName}}!</h2>
           <p>
             It is potential analysis framework specially designed to identify identification of personality type
           </p>
-          <button mat-raised-button color="primary">Take a Personality Test</button>
+          <button mat-raised-button color="primary" class="mt-5 full-width large-button"
+            routerLink="/personality-test">Take a Personality Test</button>
         </div>
       </div>
-      <div class="col-sm-6 d-flex justify-content-end">
+      <div class="col-sm-8 d-flex justify-content-end">
         <img src="assets/images/welcome.jpg" height="350" class="rounded" alt="No events" />
       </div>
     </div>
