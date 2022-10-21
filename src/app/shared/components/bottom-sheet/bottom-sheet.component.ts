@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { MatBottomSheetRef } from '@angular/material/bottom-sheet';
 
-import { TaskService } from 'src/app/modules/tasks/task.service';
+// import { TaskService } from 'src/app/modules/tasks/task.service';
 
 @Component({
   selector: 'app-bottom-sheet',
@@ -14,12 +14,12 @@ export class BottomSheetComponent implements OnInit {
   taskRefreshSubscription: any;
 
   constructor(
-    private taskService: TaskService,
+    // private taskService: TaskService,
     private _bottomSheetRef: MatBottomSheetRef<BottomSheetComponent>
   ) { }
 
   ngOnInit(): void {
-    this.initiateSubscriptions();
+    // this.initiateSubscriptions();
   }
 
   openLink(event: MouseEvent): void {
@@ -27,15 +27,15 @@ export class BottomSheetComponent implements OnInit {
     event.preventDefault();
   }
 
-  initiateSubscriptions() {
-    this.taskCompletSubscription = this.taskService.getTaskCompletedEmitter()
-      .subscribe(() => this.handleCloseTask());
+  // initiateSubscriptions() {
+  //   this.taskCompletSubscription = this.taskService.getTaskCompletedEmitter()
+  //     .subscribe(() => this.handleCloseTask());
     
-    this.taskRefreshSubscription = this.taskService.getRefreshTaskEmitter()
-      .subscribe(() => {
-        this.handleCloseTask();
-      });
-  }
+  //   this.taskRefreshSubscription = this.taskService.getRefreshTaskEmitter()
+  //     .subscribe(() => {
+  //       this.handleCloseTask();
+  //     });
+  // }
 
   handleCloseTask(): void {
     this._bottomSheetRef.dismiss();

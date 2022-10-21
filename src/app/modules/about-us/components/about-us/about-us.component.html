@@ -3,8 +3,9 @@
         <div class="row">
             <div class="col-sm-5">
                 <div class="mt-5">
-                    <h1 class="text-center pt-4"><strong>More About Our
-                            <br> Services</strong></h1>
+                    <h1 class="text-center pt-4">
+                        <strong>More About Our <br> Services</strong>
+                    </h1>
                     <p class="mt-4">
                         This text is to explain more about our products and services that we provide
                     </p>
@@ -12,7 +13,7 @@
                         It's all about who we are and what we do
                     </p>
 
-                    <button mat-raised-button type="button" class="large-button full-width btn-rounded" color="primary">
+                    <button mat-raised-button type="button" class="large-button full-width rounded-corner" color="primary">
                         Get Started
                     </button>
                 </div>
@@ -26,7 +27,7 @@
     <div class="row">
         <div class="col-sm-3" *ngFor="let item of locatedCities;">
             <div class="border p-3">
-                <p>{{item?.name}}</p>
+                <p><strong>{{item?.name}}</strong></p>
                 <p>{{item?.address}}</p>
                 <p>{{item?.location}}</p>
             </div>
