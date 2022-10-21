@@ -2,6 +2,8 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 
 import { PersonalityTestRoutingModule } from './personality-test-routing.module';
+import { SharedModule } from 'src/app/shared/modules/shared.module';
+
 import { PersonalityTestComponent } from './components/personality-test/personality-test.component';
 import { PersonalityTestResultComponent } from './components/personality-test-result/personality-test-result.component';
 
@@ -12,7 +14,8 @@ import { PersonalityTestResultComponent } from './components/personality-test-re
   ],
   imports: [
     CommonModule,
-    PersonalityTestRoutingModule
+    PersonalityTestRoutingModule,
+    SharedModule
   ]
 })
 export class PersonalityTestModule { }

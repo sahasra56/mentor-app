@@ -26,8 +26,4 @@ export class AppComponent {
   initiateSubscriptions() {
     this.isLoggedIn$ = this.authService.isLoggedIn;
   }
-
-  handleLogoutClick() {
-    this.authService.logout();
-  }
 }

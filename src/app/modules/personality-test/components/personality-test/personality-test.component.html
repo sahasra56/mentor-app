@@ -1,1 +1,22 @@
-<p>personality-test works!</p>
+<h3 class="text-center">Personality Test</h3>
+
+<div class="row mt-5 mb-4 scrolling-wrapper text-center">
+    <div class="col-sm-12" *ngFor="let question of questions$; let i = index;">
+        <h4>{{question?.description}}</h4>
+        <section class="choice mt-3" mat-line>
+            <mat-radio-group aria-label="Select an option">
+                Agree
+                <mat-radio-button value="choice?.id" *ngFor="let choice of choices$"></mat-radio-button>
+                Disagree
+            </mat-radio-group>
+        </section>
+        <hr *ngIf="i != questions$.length - 1">
+    </div>
+</div>
+
+<div class="row mt-4">
+    <div class="col-sm-3">
+        <button mat-raised-button color="primary" class="full-width large-button rounded-corner"
+            routerLink="../personality-test-result">Submit</button>
+    </div>
+</div>

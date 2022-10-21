@@ -12,6 +12,7 @@ import { AuthService } from '../core/services';
 export class HeaderComponent implements OnInit {
 
   applicationName: string = Constants.applicationName;
+  userName!: string;
   isLoggedIn$!: Observable<boolean>;
 
   constructor(
