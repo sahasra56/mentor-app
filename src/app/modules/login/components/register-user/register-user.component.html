@@ -1,18 +1,30 @@
 <div class="container mt-3">
     <div class="row mt-5 align-items-center">
-        <div class="col-sm-8">
+        <div class="col-sm-7">
             <h2>Welcome!
                 <br>
                 First Things First...
             </h2>
             <p>Consequat adipisicing ea do labore irure adipisicing occaecat cupidatat excepteur duis mo</p>
         </div>
-        <div class="col-sm-4">
+        <div class="col-sm-5">
             <div class="card">
                 <div class="card-body text-center">
                     <h5 class="mb-3"><strong>Create an Account</strong></h5>
                     <span></span>
                     <form [formGroup]="userForm" novalidate (ngSubmit)="handleRegsiterUser()" class="mt-4">
+                        <div class="form-group" class="mb-3">
+                            <div class="row">
+                                <div class="col-sm-6" *ngFor="let role of roles; let i = index;">
+                                    <mat-radio-group aria-label="Select an option" formControlName="role">
+                                        <div class="card mb-2">
+                                            <mat-radio-button [value]="role?.id">{{role?.name}}
+                                            </mat-radio-button>
+                                        </div>
+                                    </mat-radio-group>
+                                </div>
+                            </div>
+                        </div>
                         <div class="form-group" formGroupName="name">
                             <div class="row">
                                 <div class="col-sm-6">

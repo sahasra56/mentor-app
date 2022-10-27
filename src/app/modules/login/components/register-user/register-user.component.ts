@@ -17,6 +17,12 @@ export class RegisterUserComponent implements OnInit {
   emailValidatorPattern: string = "^[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$";
   hide: boolean = true;
 
+  roles = [
+    // { id: 1, name: 'Admin' },
+    { id: 2, name: 'Mentor' },
+    { id: 3, name: 'Seeker' }
+  ]
+
   salutations: string[] = ['Mr.', 'Mrs.', 'Miss'];
 
   constructor(
@@ -33,6 +39,7 @@ export class RegisterUserComponent implements OnInit {
   initializeForm() {
 
     this.userForm = new FormGroup({
+      role: new FormControl(null),
       name: this.formBuilder.group({
         // salutation: ['', Validators.required],
         firstName: ['', Validators.required],
@@ -60,23 +67,24 @@ export class RegisterUserComponent implements OnInit {
 
   handleRegsiterUser() {
     try {
+      console.log('this.userForm.value', this.userForm.value);
       this.userService.createUser(this.userForm.value).subscribe((res: Response) => {
         this.snackBar.openSnackBar(res?.message!, 'Close', 'green-snackbar');
         setTimeout(() => {
           this.router.navigate(['/login']);
         }, 2000);
       });
-    } catch(error: any) {
+    } catch (error: any) {
       this.snackBar.openSnackBar(error, 'Close', 'red-snackbar');
     }
   }
 
   markFormPristine(form: FormGroup): void {
     Object.keys(form.controls).forEach(control => {
-        form.controls[control].markAsPristine();
+      form.controls[control].markAsPristine();
     });
   }
-  
+
   unhide() {
     var set;
     if (this.hide) {
