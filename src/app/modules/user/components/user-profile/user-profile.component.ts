@@ -84,6 +84,13 @@ export class UserProfileComponent implements OnInit {
     });
 
     this.userForm.controls['email'].disable();
+    if (this.userForm.value.state) {
+      this.getDistrictByStateId();
+    }
+
+    if (this.userForm.value.district) {
+      this.getSchoolByDistrictId();
+    }
   }
 
   getStates() {
@@ -93,13 +100,22 @@ export class UserProfileComponent implements OnInit {
   }
 
   handleStateSelection(event: any) {
-    console.log('event', event);
     this.getDistrictByStateId();
   }
 
   getDistrictByStateId() {
     this.districtService.getDistrictByStateId(this.userForm.value.state).subscribe((res: Response) => {
       this.districts$ = res?.data;
+    });
+  }
+
+  handleDistrictSelection(event: any) {
+    this.getSchoolByDistrictId();
+  }
+
+  getSchoolByDistrictId() {
+    this.schoolService.getSchoolByDistrictId(this.userForm.value.district).subscribe((res: Response) => {
+      this.schools$ = res?.data;
     });
   }
 

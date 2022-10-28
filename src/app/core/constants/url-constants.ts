@@ -60,5 +60,6 @@ export class URLConstants {
 	// School routes
     public static CREATE_SCHOOL_API: string = 'v1/schools/create';
     public static GET_SCHOOL_BY_ID_API: string = 'v1/schools/getById';
+    public static GET_SCHOOL_BY_DISTRICT_ID_API: string = 'v1/schools/getByDistrictId';
     public static GET_SCHOOLS_API: string = 'v1/schools/getSchools';
 }

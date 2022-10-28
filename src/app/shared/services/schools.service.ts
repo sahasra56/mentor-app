@@ -15,14 +15,18 @@ export class SchoolService {
   ) { }
 
   getSchools() {
-    return this.httpService.get(URLConstants.GET_STATES_API);
+    return this.httpService.get(URLConstants.GET_SCHOOLS_API);
   }
 
   getSchoolById(id: number) {
-    return this.httpService.get(URLConstants.GET_STATE_BY_ID_API + `/${id}`);
+    return this.httpService.get(URLConstants.GET_SCHOOL_BY_ID_API + `/${id}`);
+  }
+
+  getSchoolByDistrictId(districtId: number) {
+    return this.httpService.get(URLConstants.GET_SCHOOL_BY_DISTRICT_ID_API + `/${districtId}`);
   }
 
   createSchool(payload: School) {
-    return this.httpService.post(URLConstants.CREATE_STATE_API, payload);
+    return this.httpService.post(URLConstants.CREATE_SCHOOL_API, payload);
   }
 }

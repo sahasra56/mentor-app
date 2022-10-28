@@ -94,7 +94,7 @@
                 <div class="col-md-3">
                     <mat-form-field appearance="fill">
                         <mat-label>District</mat-label>
-                        <mat-select>
+                        <mat-select formControlName="district" (selectionChange)="handleDistrictSelection($event)">
                             <mat-option *ngFor="let district of districts$" [value]="district?._id">
                                 {{district.code}} - {{district.name}}
                             </mat-option>
@@ -104,7 +104,7 @@
                 <div class="col-md-3">
                     <mat-form-field appearance="fill">
                         <mat-label>School</mat-label>
-                        <mat-select>
+                        <mat-select formControlName="school">
                             <mat-option *ngFor="let school of schools$" [value]="school?._id">
                                 {{school.name}}
                             </mat-option>
