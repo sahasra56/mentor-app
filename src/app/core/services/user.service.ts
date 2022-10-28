@@ -24,6 +24,10 @@ export class UserService {
     return this.httpService.post(URLConstants.AUTHENTICATE_API, payload);
   }
   
+  authMe() {
+    return this.httpService.get(URLConstants.AUTH_ME_API);
+  }
+  
   createUser(payload: User) {
     return this.httpService.post(URLConstants.REGISTER_USER_API, payload);
   }

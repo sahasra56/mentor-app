@@ -10,7 +10,22 @@
           routerLink="/user-profile">Complete Profile</button>
       </div>
       <div class="col-sm-8 d-flex justify-content-end">
-        <img src="assets/images/welcome.jpg" height="350" class="rounded" alt="No events" />
+        <ng-container *ngIf="!isNotificationsAvailable; else notificationsAvailable">
+          <img src="assets/images/welcome.jpg" height="350" class="rounded" alt="No events"/>
+        </ng-container>
+        <ng-template #notificationsAvailable>
+          <h6><strong>Notifications</strong></h6>
+
+          <div class="card mt-3">
+            <div class="row d-flex align-items-center justify-content-center">
+              <div class="col-2">
+                <img src="assets/images/notification.png" width="30" height="30" class="img-fluid">
+              </div>
+              <div class="col-10"><span>You have a new message</span></div>
+            </div>
+          </div>
+
+        </ng-template>
       </div>
     </div>
   </div>
@@ -28,14 +43,12 @@
     </div>
     <div class="row">
       <div class="col-sm-4 mt-5">
-        <div>
-          <h2>Welcome, {{userName}}!</h2>
-          <p>
-            It is potential analysis framework specially designed to identify identification of personality type
-          </p>
-          <button mat-raised-button color="primary" class="mt-5 full-width large-button rounded-corner"
-            routerLink="/user-profile">Complete Profile</button>
-        </div>
+        <h2>Welcome, {{userName}}!</h2>
+        <p>
+          It is potential analysis framework specially designed to identify identification of personality type
+        </p>
+        <button mat-raised-button color="primary" class="mt-5 full-width large-button rounded-corner"
+          routerLink="/user-profile">Complete Profile</button>
       </div>
     </div>
   </div>

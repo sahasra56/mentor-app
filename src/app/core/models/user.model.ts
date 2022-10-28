@@ -20,6 +20,9 @@ export class User extends Common {
   };
   categories: any;
   age?: number;
+  state?: number;
+  district?: number;
+  school?: number;
 
   static roles = {
     ADMIN: 1,

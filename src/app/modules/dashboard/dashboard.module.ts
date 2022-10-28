@@ -8,10 +8,12 @@ import { DashboardComponent } from './components/dashboard.component';
 
 import { FormsModule } from '@angular/forms';
 import { SharedModule } from 'src/app/shared/modules/shared.module';
+import { MentorListComponent } from './components/mentor-list/mentor-list.component';
 
 @NgModule({
   declarations: [
     DashboardComponent,
+    MentorListComponent,
     // EventDetailsComponent
   ],
   imports: [

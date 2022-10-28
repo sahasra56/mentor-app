@@ -5,6 +5,7 @@ export class URLConstants {
     public static UPDATE_USER_API: string = 'v1/users/update';
     public static GET_USERS_API: string = 'v1/users/getAll';
     public static GET_USER_BYID_API: string = 'v1/users/getById';
+    public static AUTH_ME_API: string = 'v1/users/authMe';
     public static GET_USER_NOTIFICATIONS_API: string = 'v1/users/getUserNotifications';
 
     // Role routes
@@ -35,7 +36,7 @@ export class URLConstants {
     public static INFORM_PODCAST_AVAILABLE_API: string = 'v1/podcasts/informNewPodcastIsAvailable';
     public static GET_PODCASTS_API: string = 'v1/podcasts/getPodcasts';
     public static READ_PODCASTS_API: string = 'v1/podcasts/readPodcasts';
-    
+
     // Question and Answer routes
     public static CREATE_QUESTION_API: string = 'v1/question-and-answers/create';
     public static GET_QUSTION_ANSWERS_BY_ID_API: string = 'v1/question-and-answers/getQuestionAnswersById';
@@ -44,4 +45,20 @@ export class URLConstants {
     public static VIEW_ANSWERED_QUESTIONS_API: string = 'v1/question-and-answers/viewAnsweredQuestions';
     public static DELETE_QUESTION_API: string = 'v1/question-and-answers/deleteQuestion';
     public static GET_QUESTIONS_API: string = 'v1/question-and-answers/getQuestions';
+
+    // State routes
+    public static CREATE_STATE_API: string = 'v1/states/create';
+    public static GET_STATE_BY_ID_API: string = 'v1/states/getById';
+    public static GET_STATES_API: string = 'v1/states/getStates';
+
+    // District routes
+    public static CREATE_DISTRICT_API: string = 'v1/districts/create';
+    public static GET_DISTRICT_BY_STATE_ID_API: string = 'v1/districts/getByStateId';
+    public static GET_DISTRICT_BY_ID_API: string = 'v1/districts/getById';
+    public static GET_DISTRICTS_API: string = 'v1/districts/getDistricts';
+    
+	// School routes
+    public static CREATE_SCHOOL_API: string = 'v1/schools/create';
+    public static GET_SCHOOL_BY_ID_API: string = 'v1/schools/getById';
+    public static GET_SCHOOLS_API: string = 'v1/schools/getSchools';
 }

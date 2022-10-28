@@ -14,6 +14,7 @@ export class HeaderComponent implements OnInit {
   applicationName: string = Constants.applicationName;
   userName!: string;
   isLoggedIn$!: Observable<boolean>;
+  notificationCount: number = 2;
 
   constructor(
     private authService: AuthService
