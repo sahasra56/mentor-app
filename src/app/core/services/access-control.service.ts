@@ -2,7 +2,8 @@ import { Injectable } from '@angular/core';
 
 enum Role {
     ADMIN = 1,
-    NON_ADMIN = 2
+    MENTOR = 2,
+    SEEKER = 3
 }
 
 @Injectable({

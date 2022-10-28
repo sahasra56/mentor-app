@@ -1,0 +1,100 @@
+<div class="text-center">
+    <h3>Hi, {{userName}} ({{role?.name}})</h3>
+    <p>Complete your profile</p>
+</div>
+
+<div class="row d-flex justify-content-center">
+    <div class="col-sm-8">
+        <form [formGroup]="userForm" novalidate (ngSubmit)="handleUpdateProfile()" class="mt-4">
+            <div class="form-group" formGroupName="name">
+                <div class="row">
+                    <div class="col-sm-6">
+                        <mat-form-field appearance="fill">
+                            <mat-label>First name</mat-label>
+                            <input matInput type="text" formControlName="firstName" required>
+                            <mat-error *ngIf="userForm.get('name')?.value.firstName?.invalid">First name is
+                                required</mat-error>
+                        </mat-form-field>
+                    </div>
+                    <div class="col-sm-6">
+                        <mat-form-field appearance="fill">
+                            <mat-label>Last name</mat-label>
+                            <input matInput type="text" formControlName="lastName" required>
+                            <mat-error *ngIf="userForm.get('name')?.value.lastName?.invalid">Last name is
+                                required</mat-error>
+                        </mat-form-field>
+                    </div>
+                </div>
+            </div>
+            <div class="form-group">
+                <div class="row">
+                    <div class="col-sm-6">
+                        <mat-form-field appearance="fill">
+                            <mat-label>Email</mat-label>
+                            <input matInput type="email" formControlName="email" placeholder="e.g. abc@gmail.com"
+                                required [disabled]="true">
+                            <mat-icon matSuffix *ngIf="userForm.get('email')?.valid">check</mat-icon>
+                        </mat-form-field>
+                    </div>
+                    <div class="col-sm-3">
+                        <mat-form-field appearance="fill">
+                            <mat-label>Age</mat-label>
+                            <input matInput type="number" formControlName="age" placeholder="Enter your age">
+                        </mat-form-field>
+                    </div>
+                    <div class="col-sm-3">
+                        <mat-form-field appearance="fill">
+                            <mat-label>Mobile Number</mat-label>
+                            <input matInput type="text" formControlName="mobileNumber"
+                                placeholder="Enter mobile number">
+                        </mat-form-field>
+                    </div>
+                </div>
+            </div>
+            <section *ngIf="isMentor; else seekerContent">
+                <h6><strong>Categories</strong></h6>
+                <div class="form-group" class="mb-3">
+                    <div class="row d-flex justify-content-center">
+                        <div class="col-sm-12">
+                            <mat-selection-list formControlName="categories">
+                                <div class="row">
+                                    <div class="col-xs-6 col-sm-6 col-md-3 mb-3" *ngFor="let category of categories">
+                                        <div class="card pointer" (click)="category.selected = !category.selected;">
+                                            <mat-list-option [value]="category.id" [selected]="category.selected">
+                                                {{category?.name}}
+                                            </mat-list-option>
+                                        </div>
+                                    </div>
+                                </div>
+                            </mat-selection-list>
+                        </div>
+                    </div>
+                </div>
+            </section>
+            <ng-template #seekerContent>
+                <div *ngIf="role?.id == 3; else noContent">
+                    Seeker div
+                </div>
+            </ng-template>
+            <ng-template #noContent>
+                <div>
+                    No content div
+                </div>
+            </ng-template>
+            <hr>
+            <div class="row d-flex justify-content-end">
+                <div class="col-sm-2">
+                    <button mat-raised-button type="submit" class="large-button full-width">
+                        Cancel
+                    </button>
+                </div>
+                <div class="col-sm-4">
+                    <button mat-raised-button type="submit" class="large-button full-width" color="primary"
+                        [disabled]="userForm.invalid || !userForm.dirty">
+                        Update
+                    </button>
+                </div>
+            </div>
+        </form>
+    </div>
+</div>

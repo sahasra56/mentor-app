@@ -14,8 +14,8 @@
                     <span></span>
                     <form [formGroup]="userForm" novalidate (ngSubmit)="handleRegsiterUser()" class="mt-4">
                         <div class="form-group" class="mb-3">
-                            <div class="row">
-                                <div class="col-sm-6" *ngFor="let role of roles; let i = index;">
+                            <div class="row d-flex justify-content-center">
+                                <div class="col-4" *ngFor="let role of roles; let i = index;">
                                     <mat-radio-group aria-label="Select an option" formControlName="role">
                                         <div class="card mb-2">
                                             <mat-radio-button [value]="role?.id">{{role?.name}}

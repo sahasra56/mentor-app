@@ -1,4 +1,4 @@
-<div class="container" style="height: 100%">
+<div class="container" style="height: 100%" *ngIf="ROLES.MENTOR == role; else seekerContent">
   <div class="d-flex align-items-center justify-content-between" style="height: 100%">
     <div class="row">
       <div class="col-sm-4 mt-5">
@@ -8,7 +8,7 @@
             It is potential analysis framework specially designed to identify identification of personality type
           </p>
           <button mat-raised-button color="primary" class="mt-5 full-width large-button rounded-corner"
-            routerLink="/personality-test">Take a Personality Test</button>
+            routerLink="/user-profile">Complete Profile</button>
         </div>
       </div>
       <div class="col-sm-8 d-flex justify-content-end">
@@ -18,11 +18,27 @@
   </div>
 </div>
 
-<!-- <div class="border border-light p-3 mb-4">
-  <div class="d-flex align-items-center justify-content-center" style="height: 350px">
-    <div id="example-div" class="bg-info border d-flex align-items-center justify-content-center"
-      style="height: 100px">
-      <p>This is a content</p>
-    </div>
+<ng-template #seekerContent>
+  <div class="container" style="height: 100%">
+      <div class="row">
+        <div class="col-sm-12">
+          <mat-form-field appearance="fill">
+            <mat-label>Search</mat-label>
+            <input matInput type="text" [formControl]="search" placeholder="e.g. Mathematics">
+          </mat-form-field>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-sm-4 mt-5">
+          <div>
+            <h2>Welcome, {{userName}}!</h2>
+            <p>
+              It is potential analysis framework specially designed to identify identification of personality type
+            </p>
+            <button mat-raised-button color="primary" class="mt-5 full-width large-button rounded-corner"
+              routerLink="/user-profile">Complete Profile</button>
+          </div>
+        </div>
+      </div>
   </div>
-</div> -->
+</ng-template>

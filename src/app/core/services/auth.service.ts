@@ -15,9 +15,7 @@ export class AuthService {
   private isAuthenticatedSubject = new ReplaySubject<boolean>(1);
   public isAuthenticated = this.isAuthenticatedSubject.asObservable();
 
-  // private userInfoSource: BehaviorSubject<User> = new BehaviorSubject<any>(null);
-  // currentUser = this.userInfoSource.asObservable();
-
+  ROLES = User.roles;
 
   get isLoggedIn() {
     if (sessionStorage.getItem('userInfo')) {
@@ -52,6 +50,13 @@ export class AuthService {
     let userData = this.appConfigService.getSessionObj('userInfo');
     isAdmin = (userData.role === 0) ? true : false; // Role id 0 is for admin
     return isAdmin;
+  }
+
+  isMentor() {
+    const userInfo = JSON.parse(sessionStorage.getItem('userInfo')!);
+    console.log(userInfo.role, this.ROLES.MENTOR);
+    const isMentor = this.ROLES.MENTOR === userInfo.role;
+    return isMentor;
   }
 
   getUserName() {

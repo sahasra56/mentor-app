@@ -17,5 +17,11 @@ export class User extends Common {
   name?: {
     firstName: string,
     lastName: string
-  }
+  };
+
+  static roles = {
+    ADMIN: 1,
+    MENTOR: 2,
+    SEEKER: 3
+  };
 }

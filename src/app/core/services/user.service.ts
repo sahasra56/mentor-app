@@ -32,20 +32,20 @@ export class UserService {
     return this.httpService.get('getUsers');
   }
 
-  updateUser(data: any) {
-    return this.httpService.put(`updateUser/${data._id}`, data);
+  updateUser(payload: any) {
+    return this.httpService.put(`updateUser/${payload._id}`, payload);
   }
 
-  deleteUser(data: any) {
-    return this.httpService.delete(`deleteUser/${data._id}`);
+  deleteUser(payload: any) {
+    return this.httpService.delete(`deleteUser/${payload._id}`);
   }
 
   getUserById(userId: Number) {
     return this.httpService.get(`getUserById/${userId}`);
   }
 
-  emitUserFormData(data: any) {
-    this.userForm.next(data);
+  emitUserFormData(payload: any) {
+    this.userForm.next(payload);
   }
 
   getUserNotifications() {
