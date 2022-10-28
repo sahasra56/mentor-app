@@ -36,13 +36,13 @@
                             <mat-icon matSuffix *ngIf="userForm.get('email')?.valid">check</mat-icon>
                         </mat-form-field>
                     </div>
-                    <div class="col-sm-3">
+                    <div class="col-sm-3" *ngIf="role?.id != 3">
                         <mat-form-field appearance="fill">
                             <mat-label>Age</mat-label>
                             <input matInput type="number" formControlName="age" placeholder="Enter your age">
                         </mat-form-field>
                     </div>
-                    <div class="col-sm-3">
+                    <div class="col-sm-3" [ngClass]="role?.id == 3 ? 'col-sm-6' : ''">
                         <mat-form-field appearance="fill">
                             <mat-label>Mobile Number</mat-label>
                             <input matInput type="text" formControlName="mobileNumber" placeholder="Mobile number">
@@ -72,12 +72,12 @@
             </section>
             <ng-template #seekerContent>
                 <div *ngIf="role?.id == 3; else noContent">
-                    Seeker div
+                    <!-- Seeker div -->
                 </div>
             </ng-template>
             <ng-template #noContent>
                 <div>
-                    No content div
+                    <!-- No content div -->
                 </div>
             </ng-template>
             <div class="row">
