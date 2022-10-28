@@ -33,7 +33,7 @@ export class UserService {
   }
 
   updateUser(payload: any) {
-    return this.httpService.put(`updateUser/${payload._id}`, payload);
+    return this.httpService.put(URLConstants.UPDATE_USER_API + `/${payload._id}`, payload);
   }
 
   deleteUser(payload: any) {
@@ -41,7 +41,7 @@ export class UserService {
   }
 
   getUserById(userId: Number) {
-    return this.httpService.get(`getUserById/${userId}`);
+    return this.httpService.get(URLConstants.GET_USER_BYID_API + `/${userId}`);
   }
 
   emitUserFormData(payload: any) {

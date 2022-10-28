@@ -46,7 +46,7 @@
                         <mat-form-field appearance="fill">
                             <mat-label>Mobile Number</mat-label>
                             <input matInput type="text" formControlName="mobileNumber"
-                                placeholder="Enter mobile number">
+                                placeholder="Mobile number">
                         </mat-form-field>
                     </div>
                 </div>
@@ -60,7 +60,7 @@
                                 <div class="row">
                                     <div class="col-xs-6 col-sm-6 col-md-3 mb-3" *ngFor="let category of categories">
                                         <div class="card pointer" (click)="category.selected = !category.selected;">
-                                            <mat-list-option [value]="category.id" [selected]="category.selected">
+                                            <mat-list-option [value]="category.id">
                                                 {{category?.name}}
                                             </mat-list-option>
                                         </div>

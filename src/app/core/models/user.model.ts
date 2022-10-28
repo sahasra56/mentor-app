@@ -18,6 +18,8 @@ export class User extends Common {
     firstName: string,
     lastName: string
   };
+  categories: any;
+  age?: number;
 
   static roles = {
     ADMIN: 1,

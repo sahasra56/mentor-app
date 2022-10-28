@@ -38,25 +38,33 @@ export class UserProfileComponent implements OnInit {
     this.userInfo = JSON.parse(sessionStorage.getItem('userInfo')!);
     this.userName = `${this.userInfo!.name!.firstName} ${this.userInfo!.name!.lastName}`;
     this.role = this.roles.find((e) => e.id === this.userInfo.role);
-    console.log('this.role', this.role);
     this.isMentor = authService.isMentor();
-    console.log('this.isMentor', this.isMentor);
   }
 
   ngOnInit(): void {
+    this.getUserById();
     this.initializeForm();
   }
 
+  getUserById() {
+    this.userService.getUserById(this.userInfo._id!).subscribe((res: Response) => {
+      this.userInfo = res?.data;
+      this.initializeForm();
+    });
+  }
+
   initializeForm() {
+    console.log('this.userInfo', this.userInfo);
     this.userForm = new FormGroup({
+      _id: new FormControl(this.userInfo._id),
       name: this.formBuilder.group({
         firstName: [this.userInfo.name?.firstName, Validators.required],
         lastName: [this.userInfo.name?.lastName, Validators.required]
       }),
-      email: new FormControl(this.userInfo.email),
-      mobileNumber: new FormControl(''),
-      age: new FormControl(''),
-      categories: new FormControl([])
+      email: new FormControl(this.userInfo.email, Validators.required),
+      mobileNumber: new FormControl(this.userInfo.mobileNumber),
+      age: new FormControl(this.userInfo.age),
+      categories: new FormControl(this.userInfo.categories, Validators.required)
     });
 
     this.userForm.controls['email'].disable();
