@@ -32,8 +32,9 @@
 </div>
 
 <ng-template #seekerContent>
-  <div class="container" style="height: 100%">
-    <div class="row">
+  <div class="container">
+    <h2>Welcome, {{userName}}!</h2>
+    <div class="row mt-4">
       <div class="col-sm-12">
         <mat-form-field appearance="fill">
           <mat-label>Search</mat-label>
@@ -41,15 +42,9 @@
         </mat-form-field>
       </div>
     </div>
-    <div class="row">
-      <div class="col-sm-4 mt-5">
-        <h2>Welcome, {{userName}}!</h2>
-        <p>
-          It is potential analysis framework specially designed to identify identification of personality type
-        </p>
-        <button mat-raised-button color="primary" class="mt-5 full-width large-button rounded-corner"
-          routerLink="/user-profile">Complete Profile</button>
-      </div>
-    </div>
+    <p>
+      Topics which you might be interested in
+    </p>
+    <app-topic></app-topic>
   </div>
 </ng-template>

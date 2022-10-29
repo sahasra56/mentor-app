@@ -7,8 +7,10 @@ import { AppMaterialModule } from 'src/app/core/modules/app-material.module';
 import { AddTaskComponent } from 'src/app/shared/components/add-task/add-task.component';
 import { BottomSheetComponent } from 'src/app/shared/components/bottom-sheet/bottom-sheet.component';
 import { EventComponent } from 'src/app/shared/components/event/event.component';
+import { TopicComponent } from 'src/app/shared/components/topic/topic.component';
 
 import { EllipsisPipe } from '../pipes/ellipsis.pipe';
+
 // import { AccessControlDirective } from 'src/app/core/directives/access-control.directive';
 
 @NgModule({
@@ -16,7 +18,8 @@ import { EllipsisPipe } from '../pipes/ellipsis.pipe';
       AddTaskComponent,
       BottomSheetComponent,
       EventComponent,
-      EllipsisPipe
+      EllipsisPipe,
+      TopicComponent
     ],
     imports: [
       CommonModule,
@@ -32,7 +35,8 @@ import { EllipsisPipe } from '../pipes/ellipsis.pipe';
       AppMaterialModule,
       AddTaskComponent,
       EventComponent,
-      EllipsisPipe
+      EllipsisPipe,
+      TopicComponent
     ],
     providers: [ ]
   })

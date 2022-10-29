@@ -23,14 +23,18 @@ export class DashboardComponent implements OnInit {
   constructor(
     private userService: UserService
   ) {
+    
+  }
+
+  ngOnInit(): void {
+    this.getUserDetails();  
+  }
+
+  getUserDetails() {
     this.userService.authMe().subscribe((res: Response) => {
       this.userInfo = res?.data;
       this.userName = `${this.userInfo?.name?.firstName} ${this.userInfo?.name?.lastName}`;
       this.role = this.userInfo?.role!;
-    })
-  }
-
-  ngOnInit(): void {
-    
+    });
   }
 }

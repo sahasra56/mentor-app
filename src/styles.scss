@@ -5,7 +5,8 @@
 html,
 body {
     height: 100%;
-    overflow-y: auto !important;
+    overflow: hidden;
+    // overflow-y: auto !important;
 }
 
 body {
@@ -23,8 +24,9 @@ mat-form-field {
 
 .scrolling-wrapper {
     // height: 65vh;
-    // overflow-y: auto;
-    overflow-x: auto;
+    // overflow-y: hidden;
+    // overflow-x: hidden;
+    // overflow: hidden;
 }
 
 .pointer {

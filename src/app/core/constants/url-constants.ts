@@ -62,4 +62,9 @@ export class URLConstants {
     public static GET_SCHOOL_BY_ID_API: string = 'v1/schools/getById';
     public static GET_SCHOOL_BY_DISTRICT_ID_API: string = 'v1/schools/getByDistrictId';
     public static GET_SCHOOLS_API: string = 'v1/schools/getSchools';
+
+    // Topic routes
+    public static CREATE_TOPIC_API: string = 'v1/topics/create';
+    public static GET_TOPIC_BY_ID_API: string = 'v1/topics/getById';
+    public static GET_TOPICS_API: string = 'v1/topics/getTopics';
 }
