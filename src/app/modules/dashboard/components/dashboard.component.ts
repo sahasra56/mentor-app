@@ -18,6 +18,7 @@ export class DashboardComponent implements OnInit {
   role!: number;
   ROLES = User.roles;
   isProfileCompleted!: boolean;
+  notification$!: any;
   isNotificationsAvailable: boolean = true;
   
   constructor(
@@ -27,7 +28,8 @@ export class DashboardComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.getUserDetails();  
+    this.getUserDetails();
+    this.getUserNotifications();
   }
 
   getUserDetails() {
@@ -35,6 +37,15 @@ export class DashboardComponent implements OnInit {
       this.userInfo = res?.data;
       this.userName = `${this.userInfo?.name?.firstName} ${this.userInfo?.name?.lastName}`;
       this.role = this.userInfo?.role!;
+    });
+  }
+
+  getUserNotifications() {
+    this.userService.getUserNotifications().subscribe((res: Response) => {
+      this.notification$ = res?.data;
+      this.isNotificationsAvailable = Object.keys(this.notification$).some((key: any) => {
+        return this.notification$[key] > 0
+      });
     });
   }
 }

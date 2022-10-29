@@ -68,4 +68,8 @@ export class URLConstants {
     public static CREATE_TOPIC_API: string = 'v1/topics/create';
     public static GET_TOPIC_BY_ID_API: string = 'v1/topics/getById';
     public static GET_TOPICS_API: string = 'v1/topics/getTopics';
+
+    // Communication routes
+    public static CREATE_COMMUNICATION_API: string = 'v1/communications/create';
+    public static GET_COMMUNICATIONS_API: string = 'v1/communications/getCommunications';
 }

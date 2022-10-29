@@ -2,7 +2,7 @@
     <h4>Mentors</h4>
     <div class="col-sm-6 col-md-3 mt-4 mb-4" *ngFor="let mentor of mentors$">
         <div class="card d-flex align-items-center justify-content-center"
-            [routerLink]="['/communicate/mentor', topicId, mentor._id]">
+            [routerLink]="['/communication/mentor', topicId, mentor._id]">
             <img src="assets/images/user.png" class="img-fluid" height="100px" width="100px">
             <br>
             <strong>{{mentor?.name?.firstName}} {{mentor?.name?.lastName}}</strong>

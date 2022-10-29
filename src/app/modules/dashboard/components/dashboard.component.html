@@ -1,7 +1,7 @@
 <div class="container" style="height: 100%" *ngIf="ROLES.MENTOR == role; else seekerContent">
   <div class="d-flex align-items-center justify-content-between" style="height: 100%">
     <div class="row">
-      <div class="col-sm-4 mt-5">
+      <div class="col-sm-4">
         <h2>Welcome, {{userName}}!</h2>
         <p>
           It is potential analysis framework specially designed to identify identification of personality type
@@ -9,15 +9,59 @@
         <button mat-raised-button color="primary" class="mt-5 full-width large-button rounded-corner"
           routerLink="/user-profile">Complete Profile</button>
       </div>
-      <div class="col-sm-8 d-flex justify-content-end">
+      <div class="col-sm-8 d-flex flex-column align-items-center justify-content-center" style="height: 100%">
         <ng-container *ngIf="!isNotificationsAvailable; else notificationsAvailable">
           <img src="assets/images/welcome.jpg" height="350" class="rounded" alt="No events"/>
         </ng-container>
         <ng-template #notificationsAvailable>
           <h6><strong>Notifications</strong></h6>
+          <div class="card d-flex align-items-center justify-content-center" [routerLink]="['/communication']">
+            <div class="row d-flex align-items-center">
+              <div class="col-2">
+                <img src="assets/images/notification.png" width="30" height="30" class="img-fluid">
+              </div>
+              <div class="col-10"><span>You have new communication(s)</span></div>
+            </div>
+          </div>
+        </ng-template>
+      </div>
+    </div>
+  </div>
+</div>
 
-          <div class="card mt-3">
-            <div class="row d-flex align-items-center justify-content-center">
+<!-- <div class="" style="height:100px">
+  <div class="row">
+    <div class="col-md-4 bg-info border d-flex align-items-center justify-content-center">
+      Col 4
+    </div>
+    <div class="col-md-8 bg-info border d-flex align-items-center justify-content-center">Col 8</div>
+  </div>
+</div> -->
+
+<!-- <div id="example-div" *ngIf="ROLES.MENTOR == role; else seekerContent"
+  class="bg-info border d-flex align-items-center justify-content-center" style="height:100%">
+  <p>This is a content</p>
+</div> -->
+
+<!-- <div class="container" style="height: 100%" *ngIf="ROLES.MENTOR == role; else seekerContent">
+  <div class="d-flex align-items-center justify-content-between" style="height: 100%">
+    <div class="row">
+      <div class="col-sm-4">
+        <h2>Welcome, {{userName}}!</h2>
+        <p>
+          It is potential analysis framework specially designed to identify identification of personality type
+        </p>
+        <button mat-raised-button color="primary" class="mt-5 full-width large-button rounded-corner"
+          routerLink="/user-profile">Complete Profile</button>
+      </div>
+      <div class="col-sm-8 d-flex flex-column align-items-center justify-content-end" style="height: 100%">
+        <ng-container *ngIf="!isNotificationsAvailable; else notificationsAvailable">
+          <img src="assets/images/welcome.jpg" height="350" class="rounded" alt="No events"/>
+        </ng-container>
+        <ng-template #notificationsAvailable>
+          <h6><strong>Notifications</strong></h6>
+          <div class="card">
+            <div class="row">
               <div class="col-2">
                 <img src="assets/images/notification.png" width="30" height="30" class="img-fluid">
               </div>
@@ -28,7 +72,7 @@
       </div>
     </div>
   </div>
-</div>
+</div> -->
 
 <ng-template #seekerContent>
   <div class="container">
