@@ -1,7 +1,8 @@
-<h4>Mentors</h4>
-<div class="row mt-2 pb-2 mb-2 pointer">
-    <div class="col-sm-6 col-md-3 mb-4" *ngFor="let mentor of mentors$">
-        <div class="card d-flex align-items-center justify-content-center">
+<div class="row mt-2 pb-2 mb-2 pointer" *ngIf="mentors$?.length; else noMentor">
+    <h4>Mentors</h4>
+    <div class="col-sm-6 col-md-3 mt-4 mb-4" *ngFor="let mentor of mentors$">
+        <div class="card d-flex align-items-center justify-content-center"
+            [routerLink]="['/communicate/mentor', topicId, mentor._id]">
             <img src="assets/images/user.png" class="img-fluid" height="100px" width="100px">
             <br>
             <strong>{{mentor?.name?.firstName}} {{mentor?.name?.lastName}}</strong>
@@ -12,3 +13,13 @@
         </div>
     </div>
 </div>
+
+<ng-template #noMentor>
+    <div class="d-flex flex-column align-items-center justify-content-center">
+        <img src="assets/images/mentor.jpg" class="rounded" height="500">
+        <br>
+        <p>No Mentors available for this topic</p>
+        <button mat-raised-button type="button" routerLink="/dashboard">Go back</button>
+        <!-- <img src="assets/images/get-in-touch.jpg" height="500" class="rounded" alt="No events" /> -->
+    </div>
+</ng-template>

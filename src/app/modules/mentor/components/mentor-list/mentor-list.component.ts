@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute, Router } from '@angular/router';
+import { ActivatedRoute } from '@angular/router';
 
 import { Response } from 'src/app/core/models';
 import { UserService } from 'src/app/core/services/user.service';
@@ -12,6 +12,7 @@ import { UserService } from 'src/app/core/services/user.service';
 export class MentorListComponent implements OnInit {
 
   mentors$!: any[];
+  topicId!: number;
 
   constructor(
     private route: ActivatedRoute,
@@ -23,14 +24,14 @@ export class MentorListComponent implements OnInit {
   }
 
   getMentorsByTopicId() {
-    const topicId = Number(this.route.snapshot.paramMap.get('topic-id'));
-    this.userService.getMentorsByTopicId(topicId).subscribe((res: Response) => {
+    this.topicId = Number(this.route.snapshot.paramMap.get('topic-id'));
+    this.userService.getMentorsByTopicId(this.topicId).subscribe((res: Response) => {
       this.mentors$ = res?.data;
     });
   }
 
   handleChatWithMentor() {
-    
+
   }
 
 }

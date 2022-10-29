@@ -12,6 +12,7 @@ const routes: Routes = [
   { path: 'user-profile', loadChildren: () => import('./modules/user/user.module').then(m => m.UserModule), canActivate: [AuthGuard] },
   { path: 'notification', loadChildren: () => import('./modules/notification/notification.module').then(m => m.NotificationModule), canActivate: [AuthGuard] },
   { path: 'mentor', loadChildren: () => import('./modules/mentor/mentor.module').then(m => m.MentorModule), canActivate: [AuthGuard] },
+  { path: 'communicate', loadChildren: () => import('./modules/communicate/communicate.module').then(m => m.CommunicateModule), canActivate: [AuthGuard] },
   { path: 'contact-us', loadChildren: () => import('./modules/contact-us/contact-us.module').then(m => m.ContactUsModule), canActivate: [AuthGuard] },
   { path: 'about-us', loadChildren: () => import('./modules/about-us/about-us.module').then(m => m.AboutUsModule), canActivate: [AuthGuard] },
   { path: '', redirectTo: '/login', pathMatch: 'full' },
