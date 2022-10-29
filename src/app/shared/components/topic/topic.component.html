@@ -1,5 +1,5 @@
-<div class="row mt-2 pb-2 mb-2 text-center">
-    <div class="col-sm-6 col-md-4 mb-3" *ngFor="let topic of topics$">
+<div class="row mt-2 pb-2 mb-2 pointer">
+    <div class="col-sm-6 col-md-4 mb-4" *ngFor="let topic of topics$">
         <div class="card d-flex align-items-center justify-content-center"
             [routerLink]="['/mentor/mentor-list', topic._id]">
             <img src="assets/images/task.png" class="img-fluid" height="200px" width="200px">

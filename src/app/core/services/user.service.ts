@@ -55,6 +55,10 @@ export class UserService {
   getUserNotifications() {
     return this.httpService.get(URLConstants.GET_USER_NOTIFICATIONS_API);
   }
+
+  getMentorsByTopicId(topicId: number) {
+    return this.httpService.get(URLConstants.GET_MENTORS_BY_TOPIC_ID_API + `/${topicId}`);
+  }
   
 }
 

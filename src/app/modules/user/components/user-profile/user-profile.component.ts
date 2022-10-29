@@ -5,11 +5,13 @@ import { AuthService, SnackbarService, UserService } from 'src/app/core/services
 import { StateService } from 'src/app/shared/services/states.service';
 import { DistrictService } from 'src/app/shared/services/districts.service';
 import { SchoolService } from 'src/app/shared/services/schools.service';
+import { TopicService } from 'src/app/shared/services/topic.service';
 
 import { User, Response } from 'src/app/core/models';
 import { State } from 'src/app/shared/models/state.model';
 import { District } from 'src/app/shared/models/district.model';
 import { School } from 'src/app/shared/models/school.model';
+import { Topic } from 'src/app/shared/models/topic.model';
 
 @Component({
   selector: 'app-user-profile',
@@ -23,11 +25,7 @@ export class UserProfileComponent implements OnInit {
   role!: any;
   ROLES = User.roles;
   userForm!: FormGroup;
-  categories: any[] = [
-    { id: 1, name: 'Mathematics', selected: false },
-    { id: 2, name: 'Computer', selected: false },
-    { id: 3, name: 'Music', selected: false }
-  ];
+  topics$!: Topic[];
 
   roles = [
     { id: 2, name: 'Mentor' },
@@ -46,6 +44,7 @@ export class UserProfileComponent implements OnInit {
     private stateService: StateService,
     private districtService: DistrictService,
     private schoolService: SchoolService,
+    private topicService: TopicService,
     private snackBar: SnackbarService
   ) {
     this.userInfo = JSON.parse(sessionStorage.getItem('userInfo')!);
@@ -57,6 +56,7 @@ export class UserProfileComponent implements OnInit {
   ngOnInit(): void {
     this.getUserById();
     this.initializeForm();
+    this.getTopics();
     this.getStates();
   }
 
@@ -77,7 +77,7 @@ export class UserProfileComponent implements OnInit {
       email: new FormControl(this.userInfo.email, Validators.required),
       mobileNumber: new FormControl(this.userInfo.mobileNumber),
       age: new FormControl(this.userInfo.age),
-      categories: new FormControl(this.userInfo.categories, Validators.required),
+      topics: new FormControl(this.userInfo.topics, Validators.required),
       state: new FormControl(this.userInfo.state),
       district: new FormControl(this.userInfo.district),
       school: new FormControl(this.userInfo.school)
@@ -91,6 +91,12 @@ export class UserProfileComponent implements OnInit {
     if (this.userForm.value.district) {
       this.getSchoolByDistrictId();
     }
+  }
+  
+  getTopics() {
+    this.topicService.getTopics().subscribe((res: Response) => {
+      this.topics$ = res?.data;
+    });
   }
 
   getStates() {

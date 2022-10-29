@@ -7,6 +7,7 @@ export class URLConstants {
     public static GET_USER_BYID_API: string = 'v1/users/getById';
     public static AUTH_ME_API: string = 'v1/users/authMe';
     public static GET_USER_NOTIFICATIONS_API: string = 'v1/users/getUserNotifications';
+    public static GET_MENTORS_BY_TOPIC_ID_API: string = 'v1/users/getMentorsByTopicId';
 
     // Role routes
     public static CREATE_ROLE_API: string = 'v1/roles/create';

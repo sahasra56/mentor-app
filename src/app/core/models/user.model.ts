@@ -18,7 +18,7 @@ export class User extends Common {
     firstName: string,
     lastName: string
   };
-  categories: any;
+  topics: any;
   age?: number;
   state?: number;
   district?: number;

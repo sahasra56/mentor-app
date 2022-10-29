@@ -55,12 +55,12 @@
                 <div class="form-group" class="mb-3">
                     <div class="row d-flex justify-content-center">
                         <div class="col-sm-12">
-                            <mat-selection-list formControlName="categories">
+                            <mat-selection-list formControlName="topics">
                                 <div class="row">
-                                    <div class="col-xs-6 col-sm-6 col-md-3 mb-3" *ngFor="let category of categories">
-                                        <div class="card pointer" (click)="category.selected = !category.selected;">
-                                            <mat-list-option [value]="category.id">
-                                                {{category?.name}}
+                                    <div class="col-xs-6 col-sm-6 col-md-3 mb-3" *ngFor="let topic of topics$">
+                                        <div class="card pointer" (click)="topic.selected = !topic.selected;">
+                                            <mat-list-option [value]="topic._id">
+                                                {{topic?.name}}
                                             </mat-list-option>
                                         </div>
                                     </div>
