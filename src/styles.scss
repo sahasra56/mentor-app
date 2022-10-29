@@ -26,7 +26,7 @@ mat-form-field {
     // height: 65vh;
     // overflow-y: hidden;
     // overflow-x: hidden;
-    // overflow: hidden;
+    overflow: hidden;
 }
 
 .pointer {
@@ -36,12 +36,13 @@ mat-form-field {
 .card {
     padding: 1rem;
     border-radius: 10px;
+    border-color: rgba(199, 192, 192, 0.2);
     background-color: inherit !important;
     // border-color: gainsboro;
-    box-shadow: 0 4px 8px 0 rgba(199, 192, 192, 0.2);
-    // box-shadow: rgba(0, 0, 0, 0.1) 0px 4px 12px;
-    // box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
-    transition: 0.3s;
+    box-shadow: 2px 4px 8px 2px rgba(199, 192, 192, 0.2);
+    // box-shadow: 2px 2px 7px 3px rgba(0, 0, 0, 0.15),
+    //   -0px -6px 10px 0 rgba(255, 255, 255, 0.45) !important;
+    transition: 0.3s !important;
 }
 
 .grey-card {
@@ -68,8 +69,9 @@ mat-form-field {
 }
 
 /* On mouse-over, add a deeper shadow */
-.card-hover {
-    box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.2);
+.card:hover {
+    box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.1);
+    transform: 0.3s !important;
 }
 
 .full-width {
