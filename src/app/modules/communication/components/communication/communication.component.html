@@ -1,18 +1,22 @@
 <div class="row">
-    <div class="col-md-2"></div>
-    <div class="col-md-10 text-center">
-        <h4>Communications</h4>
+    <div class="col-md-2 pt-0">
+        <button mat-icon-button type="button" color="primary" (click)="handleGoBack();">
+            <mat-icon>keyboard_backspace</mat-icon>
+        </button>
+    </div>
+    <div class="col-md-10 d-flex align-items-center justify-content-center">
+        <h4 class="mb-0">Communications</h4>
     </div>
 </div>
 <div class="row mt-4" style="max-height: 50vh !important;">
-    <div class="col-md-2">
+    <!-- <div class="col-md-2">
         <div class="card-border d-flex align-items-center pointer mb-2" *ngFor="let mentor of mentors$"
             (click)="handleGetCommunicationWithMentor(mentor._id)">
             <img src="assets/images/user.png" class="img-fluid" height="16px" width="16px">
             <span style="margin-left: 1rem;">{{mentor?.name?.firstName}} {{mentor?.name?.lastName}}</span>
         </div>
-    </div>
-    <div class="col-md-10">
+    </div> -->
+    <div class="col-md-12">
         <div class="sixty-eight">
             <div *ngIf="communicationsAvailable; else noCommunications">
                 <div class="chat">

@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl } from '@angular/forms';
 import { ActivatedRoute } from '@angular/router';
+import { Location } from '@angular/common';
 
 import { AuthService } from 'src/app/core/services';
 import { UserService } from 'src/app/core/services/user.service';
@@ -27,7 +28,8 @@ export class CommunicationComponent implements OnInit {
     private route: ActivatedRoute,
     private authService: AuthService,
     private userService: UserService,
-    private communicationService: CommunicationService
+    private communicationService: CommunicationService,
+    private _location: Location
   ) {
 
   }
@@ -36,7 +38,7 @@ export class CommunicationComponent implements OnInit {
     this.me = await this.authService.getUserInfo()._id;
     const mentorId = Number(this.route.snapshot.paramMap.get('mentor-id'));
     this.senderId = Number(this.route.snapshot.paramMap.get('sender-id'));
-    this.getMentorsByTopicId();
+    // this.getMentorsByTopicId();
     this.getCommunications(mentorId);
     this.markCommunicationsAsSeen();
   }
@@ -75,6 +77,10 @@ export class CommunicationComponent implements OnInit {
       this.message.setValue('');
       this.getCommunications(this.selectedMentorId);
     });
+  }
+
+  handleGoBack() {
+    this._location.back();
   }
 
 }
