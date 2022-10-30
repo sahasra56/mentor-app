@@ -21,6 +21,7 @@ export class CommunicationComponent implements OnInit {
   message: FormControl = new FormControl('');
   selectedMentorId!: number;
   me?: number; // Current user id
+  senderId!: number;
 
   constructor(
     private route: ActivatedRoute,
@@ -28,15 +29,16 @@ export class CommunicationComponent implements OnInit {
     private userService: UserService,
     private communicationService: CommunicationService
   ) {
-    
+
   }
 
   async ngOnInit() {
     this.me = await this.authService.getUserInfo()._id;
-    console.log('this.me', this.me);
     const mentorId = Number(this.route.snapshot.paramMap.get('mentor-id'));
+    this.senderId = Number(this.route.snapshot.paramMap.get('sender-id'));
     this.getMentorsByTopicId();
     this.getCommunications(mentorId);
+    this.markCommunicationsAsSeen();
   }
 
   getMentorsByTopicId() {
@@ -48,9 +50,15 @@ export class CommunicationComponent implements OnInit {
 
   getCommunications(mentorId: number) {
     this.selectedMentorId = mentorId;
-    this.communicationService.getCommunications(mentorId).subscribe((res: Response) => {
+    this.communicationService.getCommunications(mentorId, this.senderId).subscribe((res: Response) => {
       this.communications$ = res?.data;
       this.communicationsAvailable = this.communications$.length > 0 ? true : false;
+    });
+  }
+
+  markCommunicationsAsSeen() {
+    const payload = { createdBy: this.senderId };
+    this.communicationService.markCommunicationsAsSeen(payload).subscribe((res: Response) => {
     });
   }
 
@@ -60,7 +68,7 @@ export class CommunicationComponent implements OnInit {
 
   handleSendMessage() {
     let communication = {
-      to: this.selectedMentorId,
+      to: this.senderId ? this.senderId : this.selectedMentorId,
       content: this.message.value
     }
     this.communicationService.createCommunication(communication).subscribe((res: Response) => {

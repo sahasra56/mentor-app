@@ -15,12 +15,12 @@
         </ng-container>
         <ng-template #notificationsAvailable>
           <h6><strong>Notifications</strong></h6>
-          <div class="card d-flex align-items-center justify-content-center" [routerLink]="['/communication']">
+          <div class="card" routerLink="/communication">
             <div class="row d-flex align-items-center">
-              <div class="col-2">
+              <div class="col-md-2">
                 <img src="assets/images/notification.png" width="30" height="30" class="img-fluid">
               </div>
-              <div class="col-10"><span>You have new communication(s)</span></div>
+              <div class="col-md-10"><span>You have {{notification$?.unseenCommunications}} new communication(s)</span></div>
             </div>
           </div>
         </ng-template>

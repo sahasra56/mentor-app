@@ -1,0 +1,11 @@
+<h4 class="text-center">Communications</h4>
+<div class="d-flex align-items-center flex-column justify-content-center mt-5">
+    <div class="row" *ngFor="let communication of communications$">
+        <div class="col-md-12">
+            <div class="card pointer mb-3" [routerLink]="['/communication/mentor', 0, communication.to, communication.createdBy._id]">
+                You have {{communication?.content?.length}} new communication(s) from
+                {{communication?.createdBy?.name?.firstName}} {{communication?.createdBy?.name?.lastName}}
+            </div>
+        </div>
+    </div>
+</div>

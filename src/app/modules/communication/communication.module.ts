@@ -4,10 +4,12 @@ import { SharedModule } from 'src/app/shared/modules/shared.module';
 
 import { CommunicationRoutingModule } from './communication-routing.module';
 import { CommunicationComponent } from './components/communication/communication.component';
+import { CommunicationListComponent } from './components/communication-list/communication-list.component';
 
 @NgModule({
   declarations: [
-    CommunicationComponent
+    CommunicationComponent,
+    CommunicationListComponent
   ],
   imports: [
     CommonModule,

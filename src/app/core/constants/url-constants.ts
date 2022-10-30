@@ -72,4 +72,6 @@ export class URLConstants {
     // Communication routes
     public static CREATE_COMMUNICATION_API: string = 'v1/communications/create';
     public static GET_COMMUNICATIONS_API: string = 'v1/communications/getCommunications';
+    public static GET_UNSEEN_COMMUNICATIONS_API: string = 'v1/communications/getUnseenCommunications';
+    public static MARK_COMMUNICATIONS_AS_SEEN_API: string = 'v1/communications/markCommunicationsAsSeen';
 }

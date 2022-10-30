@@ -4,4 +4,5 @@ export interface Communication extends Common {
   _id?: number;
   content?: string;
   to?: any;
+  createdBy?: any
 }
