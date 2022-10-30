@@ -8,14 +8,17 @@
 
     <div class="flex-container">
         <div class="card d-flex align-items-center pointer mb-4 m-2" *ngFor="let topic of topics$"
-            (click)="getMentorsByTopicId(topic?._id!)">
+            [ngClass]="{ 'dark-grey-card': selectedTopicId == topic._id }"
+            (click)="selectedTopicId = topic._id!; getMentorsByTopicId(topic?._id!)">
             <span>{{topic?.name}}</span>
         </div>
     </div>
 
     <div class="row mt-4" style="max-height: 50vh !important;">
         <div class="col-md-2">
-            <div class="card-border grey-card d-flex align-items-center pointer mb-2" *ngFor="let mentor of mentors$"
+            <div class="card-border grey-card d-flex align-items-center pointer mb-2"
+                *ngFor="let mentor of mentors$"
+                [ngClass]="{ 'dark-grey-card': selectedMentorId == mentor._id }"
                 (click)="handleGetCommunicationWithMentor(mentor._id)">
                 <img src="assets/images/user.png" class="img-fluid" height="16px" width="16px">
                 <span style="margin-left: 1rem;">{{mentor?.name?.firstName}} {{mentor?.name?.lastName}}</span>

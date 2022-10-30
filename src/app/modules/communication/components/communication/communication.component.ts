@@ -37,6 +37,8 @@ export class CommunicationComponent implements OnInit {
 
   async ngOnInit() {
     this.me = await this.authService.getUserInfo()._id;
+    const topicId = Number(this.route.snapshot.paramMap.get('topic-id'));
+    this.topicId = topicId;
     const mentorId = Number(this.route.snapshot.paramMap.get('mentor-id'));
     this.senderId = Number(this.route.snapshot.paramMap.get('sender-id'));
     // this.getMentorsByTopicId();
@@ -46,7 +48,6 @@ export class CommunicationComponent implements OnInit {
 
   getMentorsByTopicId() {
     const topicId = Number(this.route.snapshot.paramMap.get('topic-id'));
-    this.topicId = topicId;
     this.userService.getMentorsByTopicId(topicId).subscribe((res: Response) => {
       this.mentors$ = res?.data;
     });

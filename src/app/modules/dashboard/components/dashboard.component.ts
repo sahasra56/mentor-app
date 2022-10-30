@@ -20,6 +20,7 @@ export class DashboardComponent implements OnInit {
   isProfileCompleted!: boolean;
   notification$!: any;
   isNotificationsAvailable: boolean = true;
+  isLoading: boolean = true;
   
   constructor(
     private userService: UserService
@@ -41,11 +42,16 @@ export class DashboardComponent implements OnInit {
   }
 
   getUserNotifications() {
-    this.userService.getUserNotifications().subscribe((res: Response) => {
-      this.notification$ = res?.data;
-      this.isNotificationsAvailable = Object.keys(this.notification$).some((key: any) => {
-        return this.notification$[key] > 0
-      });
-    });
+    try {
+      this.userService.getUserNotifications().subscribe((res: Response) => {
+        this.notification$ = res?.data;
+        this.isNotificationsAvailable = Object.keys(this.notification$).some((key: any) => {
+          return this.notification$[key] > 0
+        });
+        this.isLoading = false;
+      });  
+    } catch (error) {
+      this.isLoading = false;
+    }
   }
 }

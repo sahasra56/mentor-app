@@ -2,7 +2,9 @@ import { Component, OnInit } from '@angular/core';
 import { Constants } from '../core/constants/constants';
 import { Observable } from 'rxjs';
 
-import { AuthService } from '../core/services';
+import { AuthService, UserService } from 'src/app/core/services';
+import { User } from 'src/app/core/models/user.model';
+import { Response } from 'src/app/core/models';
 
 @Component({
   selector: 'app-header',
@@ -14,18 +16,32 @@ export class HeaderComponent implements OnInit {
   applicationName: string = Constants.applicationName;
   userName!: string;
   isLoggedIn$!: Observable<boolean>;
-  notificationCount: number = 2;
+  notificationCount!: number;
+  notification$!: any;
+  isNotificationsAvailable: boolean = true;
 
   constructor(
-    private authService: AuthService
+    private authService: AuthService,
+    private userService: UserService
   ) { }
 
   ngOnInit(): void {
     this.initiateSubscriptions();
+    this.getUserNotifications();  
   }
 
   initiateSubscriptions() {
     this.isLoggedIn$ = this.authService.isLoggedIn;
+  }
+
+  getUserNotifications() {
+    this.userService.getUserNotifications().subscribe((res: Response) => {
+      this.notification$ = res?.data;
+      this.notificationCount = res?.data?.unseenCommunications ? res?.data?.unseenCommunications : '';
+      this.isNotificationsAvailable = Object.keys(this.notification$).some((key: any) => {
+        return this.notification$[key] > 0
+      });
+    });
   }
 
   handleLogoutClick() {

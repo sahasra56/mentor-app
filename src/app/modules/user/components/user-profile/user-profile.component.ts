@@ -50,9 +50,9 @@ export class UserProfileComponent implements OnInit {
     private router: Router
   ) {
     this.userInfo = JSON.parse(sessionStorage.getItem('userInfo')!);
-    this.userName = `${this.userInfo!.name!.firstName} ${this.userInfo!.name!.lastName}`;
-    this.role = this.roles.find((e) => e.id === this.userInfo.role);
-    this.isMentor = authService.isMentor();
+    // this.userName = `${this.userInfo!.name!.firstName} ${this.userInfo!.name!.lastName}`;
+    // this.role = this.roles.find((e) => e.id === this.userInfo.role);
+    this.isMentor = this.authService.isMentor();
   }
 
   ngOnInit(): void {
@@ -65,8 +65,9 @@ export class UserProfileComponent implements OnInit {
   getUserById() {
     this.userService.getUserById(this.userInfo._id!).subscribe((res: Response) => {
       this.userInfo = res?.data;
+      this.userName = `${this.userInfo!.name!.firstName} ${this.userInfo!.name!.lastName}`;
+      this.role = this.roles.find((e) => e.id === this.userInfo.role);
       this.initializeForm();
-
       if (this.userInfo.role === this.ROLES.MENTOR) {
         this.userForm.controls['topics'].setValidators(Validators.required); 
       }

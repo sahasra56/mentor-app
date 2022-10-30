@@ -27,6 +27,8 @@ export class ChatComponent implements OnInit {
   senderId!: number;
   topics$!: Topic[];
   topicId!: number;
+  isMentor$!: boolean;
+  selectedTopicId!: number;
 
   constructor(
     private route: ActivatedRoute,
@@ -40,12 +42,11 @@ export class ChatComponent implements OnInit {
 
   async ngOnInit() {
     this.me = await this.authService.getUserInfo()._id;
+    this.isMentor$ = await this.authService.isMentor();
     const mentorId = Number(this.route.snapshot.paramMap.get('mentor-id'));
     this.senderId = Number(this.route.snapshot.paramMap.get('sender-id'));
     this.getTopics();
-    // this.getMentorsByTopicId();
-    // this.getCommunications(mentorId);
-    // this.markCommunicationsAsSeen();
+    this.markCommunicationsAsSeen();
   }
 
   getTopics() {
@@ -54,16 +55,18 @@ export class ChatComponent implements OnInit {
     });
   }
 
+  // Get mentors for selected topic
   getMentorsByTopicId(topicId: number) {
-    // const topicId = Number(this.route.snapshot.paramMap.get('topic-id'));
     this.topicId = topicId;
     this.userService.getMentorsByTopicId(topicId!).subscribe((res: Response) => {
       this.mentors$ = res?.data;
+      this.selectedMentorId = 0;
       this.communications$ = [];
       this.communicationsAvailable = this.communications$.length > 0 ? true : false;
     });
   }
 
+  // Get communications for selected topic, mentor and createdBy user combination
   getCommunications(mentorId: number) {
     this.selectedMentorId = mentorId;
     this.communicationService.getCommunications(this.topicId, mentorId, this.senderId).subscribe((res: Response) => {
@@ -72,22 +75,25 @@ export class ChatComponent implements OnInit {
     });
   }
 
+  // Mark communications as seen for selected receiver and createdBy user combination
   markCommunicationsAsSeen() {
     const payload = { createdBy: this.senderId };
     this.communicationService.markCommunicationsAsSeen(payload).subscribe((res: Response) => {
     });
   }
 
+  // When mentor is changed, load communications for selected topic, mentor and createdBy user combination
   handleGetCommunicationWithMentor(mentorId: number) {
     this.getCommunications(mentorId);
   }
 
+  // Send a new message to selected user against selected topic
   handleSendMessage() {
     let communication = {
       topic: this.topicId,
       to: this.senderId ? this.senderId : this.selectedMentorId,
       content: this.message.value
-    }
+    };
     this.communicationService.createCommunication(communication).subscribe((res: Response) => {
       this.message.setValue('');
       this.getCommunications(this.selectedMentorId);
