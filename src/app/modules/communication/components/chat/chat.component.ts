@@ -42,9 +42,9 @@ export class ChatComponent implements OnInit {
     const mentorId = Number(this.route.snapshot.paramMap.get('mentor-id'));
     this.senderId = Number(this.route.snapshot.paramMap.get('sender-id'));
     this.getTopics();
-    this.getMentorsByTopicId();
-    this.getCommunications(mentorId);
-    this.markCommunicationsAsSeen();
+    // this.getMentorsByTopicId();
+    // this.getCommunications(mentorId);
+    // this.markCommunicationsAsSeen();
   }
 
   getTopics() {
@@ -53,9 +53,9 @@ export class ChatComponent implements OnInit {
     });
   }
 
-  getMentorsByTopicId() {
-    const topicId = Number(this.route.snapshot.paramMap.get('topic-id'));
-    this.userService.getMentorsByTopicId(topicId).subscribe((res: Response) => {
+  getMentorsByTopicId(topicId: number) {
+    // const topicId = Number(this.route.snapshot.paramMap.get('topic-id'));
+    this.userService.getMentorsByTopicId(topicId!).subscribe((res: Response) => {
       this.mentors$ = res?.data;
     });
   }

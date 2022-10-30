@@ -66,6 +66,10 @@ export class UserProfileComponent implements OnInit {
     this.userService.getUserById(this.userInfo._id!).subscribe((res: Response) => {
       this.userInfo = res?.data;
       this.initializeForm();
+
+      if (this.userInfo.role === this.ROLES.MENTOR) {
+        this.userForm.controls['topics'].setValidators(Validators.required); 
+      }
     });
   }
 
@@ -79,7 +83,7 @@ export class UserProfileComponent implements OnInit {
       email: new FormControl(this.userInfo.email, Validators.required),
       mobileNumber: new FormControl(this.userInfo.mobileNumber),
       age: new FormControl(this.userInfo.age),
-      topics: new FormControl(this.userInfo.topics, Validators.required),
+      topics: new FormControl(this.userInfo.topics),
       // state: new FormControl(this.userInfo.state),
       // district: new FormControl(this.userInfo.district),
       // school: new FormControl(this.userInfo.school)

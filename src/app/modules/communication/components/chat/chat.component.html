@@ -6,11 +6,15 @@
 </div>
 <div class="row mt-4" style="max-height: 50vh !important;">
     <div class="col-md-2">
-        <div class="card-border d-flex align-items-center pointer mb-2" *ngFor="let mentor of mentors$"
+        <div class="card-border d-flex align-items-center pointer mb-2" *ngFor="let topic of topics$"
+            (click)="getMentorsByTopicId(topic?._id!)">
+            <span style="margin-left: 1rem;">{{topic?.name}}</span>
+        </div>
+        <!-- <div class="card-border d-flex align-items-center pointer mb-2" *ngFor="let mentor of mentors$"
             (click)="handleGetCommunicationWithMentor(mentor._id)">
             <img src="assets/images/user.png" class="img-fluid" height="16px" width="16px">
             <span style="margin-left: 1rem;">{{mentor?.name?.firstName}} {{mentor?.name?.lastName}}</span>
-        </div>
+        </div> -->
     </div>
     <div class="col-md-10">
         <div class="sixty-eight">
