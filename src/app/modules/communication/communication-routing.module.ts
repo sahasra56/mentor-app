@@ -7,6 +7,7 @@ import { CommunicationComponent } from './components/communication/communication
 const routes: Routes = [
   { path: '', redirectTo: 'communication-list', pathMatch: "full" },
   { path: 'communication-list', component: CommunicationListComponent },
+  { path: 'mentor/:topic-id/:mentor-id', component: CommunicationComponent },
   { path: 'mentor/:topic-id/:mentor-id/:sender-id', component: CommunicationComponent }
 ];
 
