@@ -58,7 +58,7 @@
                             <mat-selection-list formControlName="topics">
                                 <div class="row">
                                     <div class="col-xs-6 col-sm-6 col-md-3 mb-3" *ngFor="let topic of topics$">
-                                        <div class="card pointer" (click)="topic.selected = !topic.selected;">
+                                        <div class="card p-2 pointer" (click)="topic.selected = !topic.selected;">
                                             <mat-list-option [value]="topic._id">
                                                 {{topic?.name}}
                                             </mat-list-option>
@@ -115,7 +115,7 @@
                     </div>
                 </div>
             </section> -->
-            
+
             <hr>
             <div class="row d-flex justify-content-end">
                 <div class="col-sm-2">
