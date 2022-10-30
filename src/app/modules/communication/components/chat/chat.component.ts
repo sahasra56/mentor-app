@@ -57,6 +57,8 @@ export class ChatComponent implements OnInit {
     // const topicId = Number(this.route.snapshot.paramMap.get('topic-id'));
     this.userService.getMentorsByTopicId(topicId!).subscribe((res: Response) => {
       this.mentors$ = res?.data;
+      this.communications$ = [];
+      this.communicationsAvailable = this.communications$.length > 0 ? true : false;
     });
   }
 
