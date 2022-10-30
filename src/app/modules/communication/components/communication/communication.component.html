@@ -9,13 +9,6 @@
     </div>
 </div>
 <div class="row mt-4" style="max-height: 50vh !important;">
-    <!-- <div class="col-md-2">
-        <div class="card-border d-flex align-items-center pointer mb-2" *ngFor="let mentor of mentors$"
-            (click)="handleGetCommunicationWithMentor(mentor._id)">
-            <img src="assets/images/user.png" class="img-fluid" height="16px" width="16px">
-            <span style="margin-left: 1rem;">{{mentor?.name?.firstName}} {{mentor?.name?.lastName}}</span>
-        </div>
-    </div> -->
     <div class="col-md-12">
         <div class="sixty-eight">
             <div *ngIf="communicationsAvailable; else noCommunications">
@@ -26,11 +19,6 @@
                         {{communication?.content}}
                     </div>
                 </div>
-                <!-- <div class="d-flex flex-column align-items-center" *ngFor="let communication of communications$"
-                    [ngClass]="(communication?.createdBy?._id === me) ? 'justify-content-end' : 'justify-content-start'">
-                    <p>{{communication?.content}}</p>
-                    <small class="text-secondary">{{communication?.createdAt | date: 'dd-MM-yyyy'}}</small>
-                </div> -->
             </div>
             <ng-template #noCommunications>
                 <div class="d-flex flex-column align-items-center justify-content-center">

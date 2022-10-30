@@ -23,6 +23,7 @@ export class CommunicationComponent implements OnInit {
   selectedMentorId!: number;
   me?: number; // Current user id
   senderId!: number;
+  topicId!: number;
 
   constructor(
     private route: ActivatedRoute,
@@ -45,6 +46,7 @@ export class CommunicationComponent implements OnInit {
 
   getMentorsByTopicId() {
     const topicId = Number(this.route.snapshot.paramMap.get('topic-id'));
+    this.topicId = topicId;
     this.userService.getMentorsByTopicId(topicId).subscribe((res: Response) => {
       this.mentors$ = res?.data;
     });
@@ -52,7 +54,7 @@ export class CommunicationComponent implements OnInit {
 
   getCommunications(mentorId: number) {
     this.selectedMentorId = mentorId;
-    this.communicationService.getCommunications(mentorId, this.senderId).subscribe((res: Response) => {
+    this.communicationService.getCommunications(this.topicId, mentorId, this.senderId).subscribe((res: Response) => {
       this.communications$ = res?.data;
       this.communicationsAvailable = this.communications$.length > 0 ? true : false;
     });
@@ -70,6 +72,7 @@ export class CommunicationComponent implements OnInit {
 
   handleSendMessage() {
     let communication = {
+      topic: this.topicId,
       to: this.senderId ? this.senderId : this.selectedMentorId,
       content: this.message.value
     }

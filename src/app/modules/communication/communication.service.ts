@@ -14,8 +14,8 @@ export class CommunicationService {
     private httpService: HttpService
   ) { }
 
-  getCommunications(mentorId: number, senderId: number) {
-    return this.httpService.get(URLConstants.GET_COMMUNICATIONS_API + `/${mentorId}/${senderId}`);
+  getCommunications(topicId: number, mentorId: number, senderId: number) {
+    return this.httpService.get(URLConstants.GET_COMMUNICATIONS_API + `/${topicId}/${mentorId}/${senderId}`);
   }
 
   // userId can be provider/mentor or seeker

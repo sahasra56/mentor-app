@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 
-import { UserService } from 'src/app/core/services';
+import { SnackbarService, UserService } from 'src/app/core/services';
 import { Response, User } from 'src/app/core/models';
 
 @Component({
@@ -13,7 +13,8 @@ export class UserVerificationComponent implements OnInit {
   users$!: User[];
 
   constructor(
-    private userService: UserService
+    private userService: UserService,
+    private snackBar: SnackbarService,
   ) { }
 
   ngOnInit(): void {
@@ -33,6 +34,7 @@ export class UserVerificationComponent implements OnInit {
     };
     this.userService.updateUser(payload).subscribe((res: Response) => {
       this.users$ = res?.data;
+      this.snackBar.openSnackBar(res?.message!, 'Close', 'green-snackbar');
       this.getUnverifiedUsers();
     });
   }
