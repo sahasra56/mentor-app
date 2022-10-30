@@ -14,16 +14,18 @@
                     <span></span>
                     <form [formGroup]="userForm" novalidate (ngSubmit)="handleRegsiterUser()" class="mt-4">
                         <div class="form-group" class="mb-3">
-                            <div class="row d-flex justify-content-center">
-                                <div class="col-4" *ngFor="let role of roles; let i = index;">
+                            <!-- <div class="row d-flex flex-column justify-content-center">
+                                <div class="col-md-12"> -->
                                     <mat-radio-group aria-label="Select an option" formControlName="role">
-                                        <div class="card mb-2">
-                                            <mat-radio-button [value]="role?.id">{{role?.name}}
-                                            </mat-radio-button>
-                                        </div>
+                                        <mat-radio-button class="card" style="margin-left: 1rem; margin-right: 1rem;" *ngFor="let role of roles; let i = index;" [value]="role?.id"
+                                            (change)="handleRoleSelection()">
+                                            <!-- <div class="card mb-2"> -->
+                                                {{role?.name}}
+                                            <!-- </div> -->
+                                        </mat-radio-button>
                                     </mat-radio-group>
-                                </div>
-                            </div>
+                                <!-- </div>
+                            </div> -->
                         </div>
                         <div class="form-group" formGroupName="name">
                             <div class="row">
@@ -67,6 +69,19 @@
                                             [type]="hide ? 'password' : 'text'" required>
                                         <mat-icon matSuffix class="clickable" *ngIf="userForm.get('password')?.valid"
                                             (click)="unhide()">{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
+                                    </mat-form-field>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="form-group" *ngIf="userForm.value.role === 2">
+                            <div class="row">
+                                <div class="col-sm-12">
+                                    <mat-form-field appearance="fill">
+                                        <mat-label>Doc URL</mat-label>
+                                        <input matInput type="text" formControlName="docUrl"
+                                            placeholder="e.g. linkedIn profile or Google drive document URL" required>
+                                        <mat-icon matSuffix *ngIf="userForm.get('email')?.valid">check</mat-icon>
                                     </mat-form-field>
                                 </div>
                             </div>

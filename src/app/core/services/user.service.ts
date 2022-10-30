@@ -36,6 +36,10 @@ export class UserService {
     return this.httpService.get('getUsers');
   }
 
+  getUnverifiedUsers() {
+    return this.httpService.get(URLConstants.GET_UNVERIFIED_USERS_API);
+  }
+
   updateUser(payload: any) {
     return this.httpService.put(URLConstants.UPDATE_USER_API + `/${payload._id}`, payload);
   }

@@ -12,7 +12,7 @@ export class User extends Common {
   lastName?: string = undefined;
   mobileNumber?: string = undefined;
   alternateNumber?: string = undefined;
-  role?: number;
+  role?: any;
   designation!: Designation;
   name?: {
     firstName: string,
@@ -23,6 +23,9 @@ export class User extends Common {
   state?: number;
   district?: number;
   school?: number;
+  isVerified?: boolean;
+  docUrl?: string;
+  isProfileCompleted?: boolean;
 
   static roles = {
     ADMIN: 1,

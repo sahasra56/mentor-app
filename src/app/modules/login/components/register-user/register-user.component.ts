@@ -49,6 +49,7 @@ export class RegisterUserComponent implements OnInit {
       }),
       email: new FormControl(''),
       password: new FormControl(''),
+      docUrl: new FormControl('')
       // address: new FormGroup({
       //   street: new FormControl(''),
       //   city: new FormControl(''),
@@ -65,9 +66,14 @@ export class RegisterUserComponent implements OnInit {
     // });
   }
 
+  handleRoleSelection() {
+    if (this.userForm.value.role == 2) {
+      this.userForm.controls['docUrl'].setValidators([Validators.required]);
+    }
+  }
+
   handleRegsiterUser() {
     try {
-      console.log('this.userForm.value', this.userForm.value);
       this.userService.createUser(this.userForm.value).subscribe((res: Response) => {
         this.snackBar.openSnackBar(res?.message!, 'Close', 'green-snackbar');
         setTimeout(() => {

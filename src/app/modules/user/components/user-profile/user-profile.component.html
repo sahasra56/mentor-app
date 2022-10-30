@@ -80,38 +80,41 @@
                     <!-- No content div -->
                 </div>
             </ng-template>
-            <div class="row">
-                <div class="col-md-3">
-                    <mat-form-field appearance="fill">
-                        <mat-label>State</mat-label>
-                        <mat-select formControlName="state" (selectionChange)="handleStateSelection($event)">
-                            <mat-option *ngFor="let state of states$" [value]="state?._id">
-                                {{state?.code}} - {{state?.name}}
-                            </mat-option>
-                        </mat-select>
-                    </mat-form-field>
+
+            <!-- <section #areaSelection>
+                <div class="row">
+                    <div class="col-md-3">
+                        <mat-form-field appearance="fill">
+                            <mat-label>State</mat-label>
+                            <mat-select formControlName="state" (selectionChange)="handleStateSelection($event)">
+                                <mat-option *ngFor="let state of states$" [value]="state?._id">
+                                    {{state?.code}} - {{state?.name}}
+                                </mat-option>
+                            </mat-select>
+                        </mat-form-field>
+                    </div>
+                    <div class="col-md-3">
+                        <mat-form-field appearance="fill">
+                            <mat-label>District</mat-label>
+                            <mat-select formControlName="district" (selectionChange)="handleDistrictSelection($event)">
+                                <mat-option *ngFor="let district of districts$" [value]="district?._id">
+                                    {{district.code}} - {{district.name}}
+                                </mat-option>
+                            </mat-select>
+                        </mat-form-field>
+                    </div>
+                    <div class="col-md-3">
+                        <mat-form-field appearance="fill">
+                            <mat-label>School</mat-label>
+                            <mat-select formControlName="school">
+                                <mat-option *ngFor="let school of schools$" [value]="school?._id">
+                                    {{school.name}}
+                                </mat-option>
+                            </mat-select>
+                        </mat-form-field>
+                    </div>
                 </div>
-                <div class="col-md-3">
-                    <mat-form-field appearance="fill">
-                        <mat-label>District</mat-label>
-                        <mat-select formControlName="district" (selectionChange)="handleDistrictSelection($event)">
-                            <mat-option *ngFor="let district of districts$" [value]="district?._id">
-                                {{district.code}} - {{district.name}}
-                            </mat-option>
-                        </mat-select>
-                    </mat-form-field>
-                </div>
-                <div class="col-md-3">
-                    <mat-form-field appearance="fill">
-                        <mat-label>School</mat-label>
-                        <mat-select formControlName="school">
-                            <mat-option *ngFor="let school of schools$" [value]="school?._id">
-                                {{school.name}}
-                            </mat-option>
-                        </mat-select>
-                    </mat-form-field>
-                </div>
-            </div>
+            </section> -->
             
             <hr>
             <div class="row d-flex justify-content-end">

@@ -1,0 +1,22 @@
+<div>
+    <h4 class="text-center">User Verification</h4>
+
+    <div class="row">
+        <div class="col-12" *ngFor="let user of users$">
+            <div class="card mb-3">
+                <div class="row">
+                    <div class="col-sm-6">
+                        <span>{{user?.name?.firstName}} {{user?.name?.lastName}}&nbsp;<strong>({{user?.role?.name}})</strong></span>
+                        &nbsp;&#x2022;&nbsp;<span>{{user?.createdAt | date: 'dd-MMM-yyyy'}}</span>
+                    </div>
+                    <div class="col-sm-6 text-end">
+                        <button mat-stroked-button type="button" color="primary" (click)="handleVerifyUser(user);">Verify</button>
+                    </div>
+                    
+                </div>
+                <a href="{{user?.docUrl}}" target="_blank">{{user?.docUrl}}</a>
+            </div>
+        </div>
+    </div>
+</div>
+

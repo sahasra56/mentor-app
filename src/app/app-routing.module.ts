@@ -9,7 +9,7 @@ const routes: Routes = [
   { path: 'login', component: LoginComponent },
   { path: 'register-user', component: RegisterUserComponent },
   { path: 'dashboard', loadChildren: () => import('./modules/dashboard/dashboard.module').then(m => m.DashboardModule), canActivate: [AuthGuard] },
-  { path: 'user-profile', loadChildren: () => import('./modules/user/user.module').then(m => m.UserModule), canActivate: [AuthGuard] },
+  { path: 'user', loadChildren: () => import('./modules/user/user.module').then(m => m.UserModule), canActivate: [AuthGuard] },
   { path: 'notification', loadChildren: () => import('./modules/notification/notification.module').then(m => m.NotificationModule), canActivate: [AuthGuard] },
   { path: 'mentor', loadChildren: () => import('./modules/mentor/mentor.module').then(m => m.MentorModule), canActivate: [AuthGuard] },
   { path: 'communication', loadChildren: () => import('./modules/communication/communication.module').then(m => m.CommunicationModule), canActivate: [AuthGuard] },

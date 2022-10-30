@@ -11,15 +11,15 @@
         <a style="margin-left: 15px;" routerLink="/about-us" routerLinkActive="active-link">About Us</a>
         <span class="example-spacer"></span>
         <span></span>
-        <button mat-icon-button aria-label="Example icon-button with a notification" class="mr-3" routerLink="/notification">
+        <!-- <button mat-icon-button aria-label="Example icon-button with a notification" class="mr-3" routerLink="/notification">
             <mat-icon [matBadge]="notificationCount" matBadgeColor="warn">notifications</mat-icon>
-        </button>
+        </button> -->
         <button mat-icon-button [matMenuTriggerFor]="menu" aria-label="Example icon-button with a menu">
             <!-- <mat-icon>person_outline</mat-icon> -->
             <img src="assets/images/user-profile.jpg" class="rounded-circle" height="40"/>
         </button>
         <mat-menu #menu="matMenu">
-            <button mat-menu-item routerLink="/user-profile">
+            <button mat-menu-item routerLink="/user/user-profile">
                 <mat-icon>account_circle</mat-icon>
                 <span>Profile</span>
             </button>

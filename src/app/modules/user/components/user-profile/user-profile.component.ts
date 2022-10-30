@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
+import { Router } from '@angular/router';
 
 import { AuthService, SnackbarService, UserService } from 'src/app/core/services';
 import { StateService } from 'src/app/shared/services/states.service';
@@ -45,7 +46,8 @@ export class UserProfileComponent implements OnInit {
     private districtService: DistrictService,
     private schoolService: SchoolService,
     private topicService: TopicService,
-    private snackBar: SnackbarService
+    private snackBar: SnackbarService,
+    private router: Router
   ) {
     this.userInfo = JSON.parse(sessionStorage.getItem('userInfo')!);
     this.userName = `${this.userInfo!.name!.firstName} ${this.userInfo!.name!.lastName}`;
@@ -78,19 +80,19 @@ export class UserProfileComponent implements OnInit {
       mobileNumber: new FormControl(this.userInfo.mobileNumber),
       age: new FormControl(this.userInfo.age),
       topics: new FormControl(this.userInfo.topics, Validators.required),
-      state: new FormControl(this.userInfo.state),
-      district: new FormControl(this.userInfo.district),
-      school: new FormControl(this.userInfo.school)
+      // state: new FormControl(this.userInfo.state),
+      // district: new FormControl(this.userInfo.district),
+      // school: new FormControl(this.userInfo.school)
     });
 
     this.userForm.controls['email'].disable();
-    if (this.userForm.value.state) {
-      this.getDistrictByStateId();
-    }
+    // if (this.userForm.value.state) {
+    //   this.getDistrictByStateId();
+    // }
 
-    if (this.userForm.value.district) {
-      this.getSchoolByDistrictId();
-    }
+    // if (this.userForm.value.district) {
+    //   this.getSchoolByDistrictId();
+    // }
   }
   
   getTopics() {
@@ -127,8 +129,11 @@ export class UserProfileComponent implements OnInit {
 
   handleUpdateProfile() {
     try {
-      this.userService.updateUser(this.userForm.value).subscribe((res: Response) => {
+      let objUser = Object.assign({}, this.userForm.value);
+      objUser.isProfileCompleted = true;
+      this.userService.updateUser(objUser).subscribe((res: Response) => {
         this.snackBar.openSnackBar(res?.message!, 'Close', 'green-snackbar');
+        this.router.navigate(['/dashboard']);
       });
     } catch (error: any) {
       this.snackBar.openSnackBar(error, 'Close', 'red-snackbar');

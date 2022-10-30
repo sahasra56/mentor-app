@@ -7,11 +7,12 @@
           It is potential analysis framework specially designed to identify identification of personality type
         </p>
         <button mat-raised-button color="primary" class="mt-5 full-width large-button rounded-corner"
-          routerLink="/user-profile">Complete Profile</button>
+          routerLink="/user/user-profile" *ngIf="!userInfo?.isProfileCompleted">Complete Profile</button>
       </div>
       <div class="col-sm-8 d-flex flex-column align-items-center justify-content-center" style="height: 100%">
         <ng-container *ngIf="!isNotificationsAvailable; else notificationsAvailable">
-          <img src="assets/images/welcome.jpg" height="350" class="rounded" alt="No events"/>
+          <h6><strong>Notifications</strong></h6>
+          <p>No new communications</p>
         </ng-container>
         <ng-template #notificationsAvailable>
           <h6><strong>Notifications</strong></h6>

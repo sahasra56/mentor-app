@@ -66,7 +66,8 @@ export class HttpService {
     if (error.error instanceof ErrorEvent) {
       errorMessage = error.message || error.error.message;
     } else {
-      errorMessage = `Error Code: ${error.status} : ${error?.error?.message || error?.message || error?.statusText}`;
+      errorMessage = `${error?.error?.message || error?.message || error?.statusText}`;
+      // errorMessage = `Error Code: ${error.status} : ${error?.error?.message || error?.message || error?.statusText}`;
     }
     this.requestError = error.error;
     this.showError(errorMessage);

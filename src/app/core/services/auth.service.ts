@@ -46,15 +46,13 @@ export class AuthService {
   }
 
   isAdminUser() {
-    let isAdmin: boolean = false;
-    let userData = this.appConfigService.getSessionObj('userInfo');
-    isAdmin = (userData.role === 0) ? true : false; // Role id 0 is for admin
+    const userInfo = JSON.parse(sessionStorage.getItem('userInfo')!);
+    const isAdmin = this.ROLES.ADMIN === userInfo.role; // Role id 0 is for admin
     return isAdmin;
   }
 
   isMentor() {
     const userInfo = JSON.parse(sessionStorage.getItem('userInfo')!);
-    console.log(userInfo.role, this.ROLES.MENTOR);
     const isMentor = this.ROLES.MENTOR === userInfo.role;
     return isMentor;
   }
@@ -105,7 +103,11 @@ export class AuthService {
     this.appConfigService.setSessionObj('userInfo', userInfo); // Store user info in session
     this.loggedIn.next(true);
     // this.userLoggedIn(userInfo);
-    this.router.navigate(['dashboard']);
+    if (this.isAdminUser()) {
+      this.router.navigate(['user/user-verification']);  
+    } else {
+      this.router.navigate(['dashboard']);
+    }
   }
 
   logout() {
