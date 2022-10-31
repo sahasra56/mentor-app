@@ -13,6 +13,7 @@ export class MentorListComponent implements OnInit {
 
   mentors$!: any[];
   topicId!: number;
+  isLoading: boolean = true;
 
   constructor(
     private route: ActivatedRoute,
@@ -24,14 +25,15 @@ export class MentorListComponent implements OnInit {
   }
 
   getMentorsByTopicId() {
-    this.topicId = Number(this.route.snapshot.paramMap.get('topic-id'));
-    this.userService.getMentorsByTopicId(this.topicId).subscribe((res: Response) => {
-      this.mentors$ = res?.data;
-    });
-  }
-
-  handleChatWithMentor() {
-
+    try {
+      this.topicId = Number(this.route.snapshot.paramMap.get('topic-id'));
+      this.userService.getMentorsByTopicId(this.topicId).subscribe((res: Response) => {
+        this.mentors$ = res?.data;
+        this.isLoading = false;
+      });
+    } catch (error) {
+      this.isLoading = false;
+    }
   }
 
 }

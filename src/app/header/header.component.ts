@@ -27,11 +27,15 @@ export class HeaderComponent implements OnInit {
 
   ngOnInit(): void {
     this.initiateSubscriptions();
-    this.getUserNotifications();  
   }
 
   initiateSubscriptions() {
     this.isLoggedIn$ = this.authService.isLoggedIn;
+    this.authService.isLoggedIn.subscribe((res: any) => {
+      if (res) {
+        this.getUserNotifications();
+      }
+    })
   }
 
   getUserNotifications() {
