@@ -29,6 +29,7 @@ export class ChatComponent implements OnInit {
   topicId!: number;
   isMentor$!: boolean;
   selectedTopicId!: number;
+  seekers$!: any[];
 
   constructor(
     private route: ActivatedRoute,
@@ -58,12 +59,21 @@ export class ChatComponent implements OnInit {
   // Get mentors for selected topic
   getMentorsByTopicId(topicId: number) {
     this.topicId = topicId;
-    this.userService.getMentorsByTopicId(topicId!).subscribe((res: Response) => {
-      this.mentors$ = res?.data;
-      this.selectedMentorId = 0;
-      this.communications$ = [];
-      this.communicationsAvailable = this.communications$.length > 0 ? true : false;
-    });
+    if (this.isMentor$) {
+      this.userService.getAllSeekers().subscribe((res: Response) => {
+        this.seekers$ = res?.data;
+        this.selectedMentorId = 0;
+        this.communications$ = [];
+        this.communicationsAvailable = this.communications$.length > 0 ? true : false;
+      });
+    } else {
+      this.userService.getMentorsByTopicId(topicId!).subscribe((res: Response) => {
+        this.mentors$ = res?.data;
+        this.selectedMentorId = 0;
+        this.communications$ = [];
+        this.communicationsAvailable = this.communications$.length > 0 ? true : false;
+      });
+    }
   }
 
   // Get communications for selected topic, mentor and createdBy user combination

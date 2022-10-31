@@ -6,23 +6,34 @@
         </div>
     </div>
 
-    <div class="flex-container">
-        <div class="card d-flex align-items-center pointer mb-4 m-2" *ngFor="let topic of topics$"
-            [ngClass]="{ 'dark-grey-card': selectedTopicId == topic._id }"
-            (click)="selectedTopicId = topic._id!; getMentorsByTopicId(topic?._id!)">
-            <span>{{topic?.name}}</span>
+    <section id="topic">
+        <div class="flex-container">
+            <div class="card d-flex align-items-center pointer mb-4 m-2" *ngFor="let topic of topics$"
+                [ngClass]="{ 'card-border-primary': selectedTopicId == topic._id }"
+                (click)="selectedTopicId = topic._id!; getMentorsByTopicId(topic?._id!)">
+                <span>{{topic?.name}}</span>
+            </div>
         </div>
-    </div>
+    </section>
 
     <div class="row mt-4" style="max-height: 50vh !important;">
         <div class="col-md-2">
-            <div class="card-border grey-card d-flex align-items-center pointer mb-2"
-                *ngFor="let mentor of mentors$"
-                [ngClass]="{ 'dark-grey-card': selectedMentorId == mentor._id }"
-                (click)="handleGetCommunicationWithMentor(mentor._id)">
-                <img src="assets/images/user.png" class="img-fluid" height="16px" width="16px">
-                <span style="margin-left: 1rem;">{{mentor?.name?.firstName}} {{mentor?.name?.lastName}}</span>
-            </div>
+            <ng-container *ngIf="!isMentor$; else seekersList">
+                <div class="card-border grey-card d-flex align-items-center pointer mb-2"
+                    *ngFor="let mentor of mentors$" [ngClass]="{ 'dark-grey-card': selectedMentorId == mentor._id }"
+                    (click)="handleGetCommunicationWithMentor(mentor._id)">
+                    <img src="assets/images/user.png" class="img-fluid" height="16px" width="16px">
+                    <span style="margin-left: 1rem;">{{mentor?.name?.firstName}} {{mentor?.name?.lastName}}</span>
+                </div>
+            </ng-container>
+            <ng-template #seekersList>
+                <div class="card-border grey-card d-flex align-items-center pointer mb-2"
+                    *ngFor="let seeker of seekers$" [ngClass]="{ 'dark-grey-card': selectedMentorId == seeker._id }"
+                    (click)="handleGetCommunicationWithMentor(seeker._id)">
+                    <img src="assets/images/user.png" class="img-fluid" height="16px" width="16px">
+                    <span style="margin-left: 1rem;">{{seeker?.name?.firstName}} {{seeker?.name?.lastName}}</span>
+                </div>
+            </ng-template>
         </div>
         <div class="col-md-10">
             <div class="fifty-four">

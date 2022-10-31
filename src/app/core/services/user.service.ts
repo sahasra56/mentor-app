@@ -15,7 +15,7 @@ export class UserService {
 
   private isAuthenticatedSubject = new ReplaySubject<boolean>(1);
   public isAuthenticated = this.isAuthenticatedSubject.asObservable();
-  
+
   constructor(
     private httpService: HttpService
   ) { }
@@ -23,17 +23,21 @@ export class UserService {
   authenticate(payload: User) {
     return this.httpService.post(URLConstants.AUTHENTICATE_API, payload);
   }
-  
+
   authMe() {
     return this.httpService.get(URLConstants.AUTH_ME_API);
   }
-  
+
   createUser(payload: User) {
     return this.httpService.post(URLConstants.REGISTER_USER_API, payload);
   }
 
   getUsers() {
-    return this.httpService.get('getUsers');
+    return this.httpService.get(URLConstants.GET_USERS_API);
+  }
+
+  getAllSeekers() {
+    return this.httpService.get(URLConstants.GET_SEEKERS_API);
   }
 
   getUnverifiedUsers() {
@@ -63,6 +67,6 @@ export class UserService {
   getMentorsByTopicId(topicId: number) {
     return this.httpService.get(URLConstants.GET_MENTORS_BY_TOPIC_ID_API + `/${topicId}`);
   }
-  
+
 }
 

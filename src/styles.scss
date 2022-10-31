@@ -45,6 +45,13 @@ mat-form-field {
     transition: 0.3s !important;
 }
 
+.card-border-primary {
+    border-radius: 10px;
+    color: #ffffff !important;
+    // border: 2px solid #bdc3e8;
+    background-color: #aeb6e3 !important;
+}
+
 .card-border {
     padding: 1rem;
     border-radius: 10px;
