@@ -1,5 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
+import { Response, User } from 'src/app/core/models';
+
+import { CommunicationService } from 'src/app/modules/communication/communication.service';
+import { SnackbarService, UserService } from 'src/app/core/services';
 
 @Component({
   selector: 'app-contact-us',
@@ -9,13 +13,18 @@ import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms'
 export class ContactUsComponent implements OnInit {
 
   contactForm!: FormGroup;
+  userInfo!: User;
 
   constructor(
-    private formBuilder: FormBuilder
+    private formBuilder: FormBuilder,
+    private communicationService: CommunicationService,
+    private snackbar: SnackbarService,
+    private userService: UserService
   ) { }
 
   ngOnInit(): void {
     this.initializeForm();
+    this.getUserDetails();
   }
 
   initializeForm() {
@@ -28,10 +37,29 @@ export class ContactUsComponent implements OnInit {
       email: new FormControl(''),
       message: new FormControl('')
     });
+
+    this.contactForm.controls['name'].disable();
+    this.contactForm.controls['email'].disable();
+  }
+
+  getUserDetails() {
+    this.userService.authMe().subscribe((res: Response) => {
+      this.userInfo = res?.data;
+      this.contactForm.patchValue({
+        name: this.userInfo.name,
+        email: this.userInfo.email
+      })
+    });
   }
 
   handleContactUs() {
     console.log('Contact us');
+    this.communicationService.sendContactUsEmail(this.contactForm.value).subscribe((res: Response) => {
+      this.snackbar.openSnackBar(res?.message!, 'Close', 'success-snackbar');
+      this.contactForm.patchValue({
+        message: ''
+      });
+    })
   }
 
 }

@@ -75,4 +75,5 @@ export class URLConstants {
     public static GET_COMMUNICATIONS_API: string = 'v1/communications/getCommunications';
     public static GET_UNSEEN_COMMUNICATIONS_API: string = 'v1/communications/getUnseenCommunications';
     public static MARK_COMMUNICATIONS_AS_SEEN_API: string = 'v1/communications/markCommunicationsAsSeen';
+    public static SEND_CONTACT_US_API_EMAIL: string = 'v1/communications/sendContactUsEmail';
 }

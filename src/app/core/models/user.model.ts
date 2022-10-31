@@ -20,6 +20,7 @@ export class User extends Common {
   };
   topics: any;
   age?: number;
+  profilePicUrl?: any;
   state?: number;
   district?: number;
   school?: number;

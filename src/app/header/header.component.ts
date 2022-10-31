@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Constants } from '../core/constants/constants';
 import { Observable } from 'rxjs';
+import { DomSanitizer } from '@angular/platform-browser';
 
 import { AuthService, UserService } from 'src/app/core/services';
 import { User } from 'src/app/core/models/user.model';
@@ -15,6 +16,7 @@ export class HeaderComponent implements OnInit {
 
   applicationName: string = Constants.applicationName;
   userName!: string;
+  userInfo!: User;
   isLoggedIn$!: Observable<boolean>;
   notificationCount!: number;
   notification$!: any;
@@ -22,7 +24,8 @@ export class HeaderComponent implements OnInit {
 
   constructor(
     private authService: AuthService,
-    private userService: UserService
+    private userService: UserService,
+    private domSanitizer: DomSanitizer
   ) { }
 
   ngOnInit(): void {
@@ -33,9 +36,19 @@ export class HeaderComponent implements OnInit {
     this.isLoggedIn$ = this.authService.isLoggedIn;
     this.authService.isLoggedIn.subscribe((res: any) => {
       if (res) {
+        this.getUserDetails();
         this.getUserNotifications();
       }
-    })
+    });
+  }
+
+  getUserDetails() {
+    this.userService.authMe().subscribe((res: Response) => {
+      this.userInfo = res?.data;
+      this.userName = `${this.userInfo?.name?.firstName} ${this.userInfo?.name?.lastName}`;
+      // this.userInfo.profilePicUrl = this.domSanitizer.bypassSecurityTrustUrl('data:image/jpeg;base64,' + this.userInfo?.profilePicUrl!);
+      console.log('this.userInfo.profilePicUrl', this.userInfo.profilePicUrl);
+    });
   }
 
   getUserNotifications() {

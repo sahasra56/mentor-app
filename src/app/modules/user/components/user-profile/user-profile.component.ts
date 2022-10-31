@@ -84,6 +84,7 @@ export class UserProfileComponent implements OnInit {
       email: new FormControl(this.userInfo.email, Validators.required),
       mobileNumber: new FormControl(this.userInfo.mobileNumber),
       age: new FormControl(this.userInfo.age),
+      profilePicUrl: new FormControl(this.userInfo.profilePicUrl),
       topics: new FormControl(this.userInfo.topics),
       // state: new FormControl(this.userInfo.state),
       // district: new FormControl(this.userInfo.district),

@@ -12,10 +12,18 @@
         <a style="margin-left: 15px;" routerLink="/about-us" routerLinkActive="active-link">About Us</a>
         <span class="example-spacer"></span>
         <span></span>
-        <button mat-icon-button aria-label="Example icon-button with a notification" class="mr-3" routerLink="/communication">
+        <button mat-icon-button aria-label="Example icon-button with a notification" class="mr-3"
+            routerLink="/communication">
             <mat-icon [matBadge]="notificationCount" matBadgeColor="warn">notifications</mat-icon>
         </button>
+        <!-- <a
+            href="https://lh6.googleusercontent.com/fQ601-Z6cDJqW__lpqSoSzH5dFlnxuz319Im-rFTtgGFWMYJPzLVI_5Nc2NO4ToAW6c">
+            <img class="img-fluid rounded-circle" height="60" width="40"
+                src="https://lh6.googleusercontent.com/fQ601-Z6cDJqW__lpqSoSzH5dFlnxuz319Im-rFTtgGFWMYJPzLVI_5Nc2NO4ToAW6c=w1200-h630-p" />
+        </a> -->
+        <!-- <iframe src="https://drive.google.com/file/d/1f1__IUhaL7WpPdO6ZnHuJt-vJkTRlGPN/preview" width="40" height="40" allow="autoplay"></iframe> -->
         <button mat-icon-button [matMenuTriggerFor]="menu" aria-label="Example icon-button with a menu">
+            <!-- <img src="{{userInfo?.profilePicUrl}}" class="rounded-circle" height="40" width="40" /> -->
             <img src="assets/images/user-profile.jpg" class="rounded-circle" height="40"/>
         </button>
         <mat-menu #menu="matMenu">

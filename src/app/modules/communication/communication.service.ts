@@ -30,4 +30,8 @@ export class CommunicationService {
   markCommunicationsAsSeen(payload: Communication) {
     return this.httpService.put(URLConstants.MARK_COMMUNICATIONS_AS_SEEN_API, payload);
   }
+
+  sendContactUsEmail(payload: any) {
+    return this.httpService.post(URLConstants.SEND_CONTACT_US_API_EMAIL, payload);
+  }
 }
