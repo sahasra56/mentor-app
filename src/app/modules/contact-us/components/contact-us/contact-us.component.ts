@@ -35,7 +35,7 @@ export class ContactUsComponent implements OnInit {
         lastName: ['', Validators.required]
       }),
       email: new FormControl(''),
-      message: new FormControl('')
+      message: new FormControl('', Validators.required)
     });
 
     this.contactForm.controls['name'].disable();
@@ -53,8 +53,8 @@ export class ContactUsComponent implements OnInit {
   }
 
   handleContactUs() {
-    console.log('Contact us');
-    this.communicationService.sendContactUsEmail(this.contactForm.value).subscribe((res: Response) => {
+    console.log('this.contactForm.value', this.contactForm.getRawValue());
+    this.communicationService.sendContactUsEmail(this.contactForm.getRawValue()).subscribe((res: Response) => {
       this.snackbar.openSnackBar(res?.message!, 'Close', 'success-snackbar');
       this.contactForm.patchValue({
         message: ''
