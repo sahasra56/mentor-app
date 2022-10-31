@@ -1,4 +1,4 @@
-import { Injectable } from '@angular/core';
+import { EventEmitter, Injectable } from '@angular/core';
 
 import { HttpService } from 'src/app/core/services';
 
@@ -10,6 +10,8 @@ import { URLConstants } from 'src/app/core/constants/url-constants';
 })
 export class CommunicationService {
 
+  notifications: EventEmitter<boolean> = new EventEmitter();
+  
   constructor(
     private httpService: HttpService
   ) { }
@@ -33,5 +35,9 @@ export class CommunicationService {
 
   sendContactUsEmail(payload: any) {
     return this.httpService.post(URLConstants.SEND_CONTACT_US_API_EMAIL, payload);
+  }
+
+  notificationsUpdated(refresh: boolean) {
+    this.notifications.emit(refresh);
   }
 }

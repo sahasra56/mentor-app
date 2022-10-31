@@ -12,6 +12,7 @@ import { Response } from 'src/app/core/models';
 })
 export class CommunicationListComponent implements OnInit {
 
+  userName!: string;
   communications$!: any[];
 
   constructor(
@@ -19,7 +20,8 @@ export class CommunicationListComponent implements OnInit {
     private communicationService: CommunicationService
   ) { }
 
-  ngOnInit(): void {
+  async ngOnInit() {
+    this.userName = await this.authService.getUserName();
     this.getUnseenCommunications();
   }
 
