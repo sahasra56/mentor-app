@@ -1,12 +1,16 @@
 <h2 class="mt-3 text-center">Hi {{userName}}</h2>
 <h4 class="mt-3 text-center">Communications</h4>
-<div class="d-flex align-items-center flex-column justify-content-center mt-4">
+<div class="mt-4">
     <div class="row" *ngFor="let communication of communications$">
-        <div class="col-md-12">
-            <div class="card pointer mb-3" [routerLink]="['/communication/mentor', 0, communication.to, communication.createdBy._id]">
+        <div class="col-md-3"></div>
+        <div class="col-md-6">
+            <div class="card pointer mb-3">
+            <div [routerLink]="['/communication/mentor', communication?.topic?._id, communication.to, communication.createdBy._id]">
                 You have {{communication?.content?.length}} new communication(s) from
-                {{communication?.createdBy?.name?.firstName}} {{communication?.createdBy?.name?.lastName}}
+                <strong>{{communication?.createdBy?.name?.firstName}} {{communication?.createdBy?.name?.lastName}}</strong>
+                for <strong>{{communication?.topic?.name}}</strong>
             </div>
+        </div>
         </div>
     </div>
 </div>

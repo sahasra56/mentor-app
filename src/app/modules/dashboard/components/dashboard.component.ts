@@ -30,7 +30,6 @@ export class DashboardComponent implements OnInit {
 
   ngOnInit(): void {
     this.getUserDetails();
-    this.getUserNotifications();
   }
 
   getUserDetails() {
@@ -38,6 +37,7 @@ export class DashboardComponent implements OnInit {
       this.userInfo = res?.data;
       this.userName = `${this.userInfo?.name?.firstName} ${this.userInfo?.name?.lastName}`;
       this.role = this.userInfo?.role!;
+      this.getUserNotifications();
     });
   }
 
