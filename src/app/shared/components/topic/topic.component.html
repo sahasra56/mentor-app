@@ -1,3 +1,14 @@
+<div class="row mt-4">
+    <div class="col-sm-12">
+        <mat-form-field appearance="fill">
+            <mat-label>Search</mat-label>
+            <input matInput type="text" [formControl]="search" placeholder="e.g. Mathematics">
+        </mat-form-field>
+    </div>
+</div>
+<p>
+    Topics which you might be interested in
+</p>
 <div class="row mt-2 pb-2 mb-2 pointer">
     <div class="col-sm-6 col-md-4 mb-4" *ngFor="let topic of topics$">
         <div class="card d-flex align-items-center justify-content-center"

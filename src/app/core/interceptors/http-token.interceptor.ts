@@ -20,7 +20,7 @@ export class HttpTokenInterceptor implements HttpInterceptor {
         let headersConfig: any = {};
         const token = this.jwtService.getToken();
 
-        if (!req.url.includes('Attachment')) {
+        if (!req.url.includes('uploadProfilePicture')) {
             headersConfig = {
                 'Content-Type': 'application/json',
                 'Accept': 'application/json'

@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
+import { MatDialog } from '@angular/material/dialog';
 
 import { AuthService, SnackbarService, UserService } from 'src/app/core/services';
 import { StateService } from 'src/app/shared/services/states.service';
@@ -13,6 +14,8 @@ import { State } from 'src/app/shared/models/state.model';
 import { District } from 'src/app/shared/models/district.model';
 import { School } from 'src/app/shared/models/school.model';
 import { Topic } from 'src/app/shared/models/topic.model';
+
+import { ProfilePictureComponent } from 'src/app/modules/user/components/profile-picture/profile-picture.component';
 
 @Component({
   selector: 'app-user-profile',
@@ -47,7 +50,8 @@ export class UserProfileComponent implements OnInit {
     private schoolService: SchoolService,
     private topicService: TopicService,
     private snackBar: SnackbarService,
-    private router: Router
+    private router: Router,
+    private dialog: MatDialog
   ) {
     this.userInfo = JSON.parse(sessionStorage.getItem('userInfo')!);
     // this.userName = `${this.userInfo!.name!.firstName} ${this.userInfo!.name!.lastName}`;
@@ -69,7 +73,7 @@ export class UserProfileComponent implements OnInit {
       this.role = this.roles.find((e) => e.id === this.userInfo.role);
       this.initializeForm();
       if (this.userInfo.role === this.ROLES.MENTOR) {
-        this.userForm.controls['topics'].setValidators(Validators.required); 
+        this.userForm.controls['topics'].setValidators(Validators.required);
       }
     });
   }
@@ -84,7 +88,7 @@ export class UserProfileComponent implements OnInit {
       email: new FormControl(this.userInfo.email, Validators.required),
       mobileNumber: new FormControl(this.userInfo.mobileNumber),
       age: new FormControl(this.userInfo.age),
-      profilePicUrl: new FormControl(this.userInfo.profilePicUrl),
+      profilePicDetails: new FormControl(this.userInfo.profilePicDetails),
       topics: new FormControl(this.userInfo.topics),
       // state: new FormControl(this.userInfo.state),
       // district: new FormControl(this.userInfo.district),
@@ -100,7 +104,7 @@ export class UserProfileComponent implements OnInit {
     //   this.getSchoolByDistrictId();
     // }
   }
-  
+
   getTopics() {
     this.topicService.getTopics().subscribe((res: Response) => {
       this.topics$ = res?.data;
@@ -133,10 +137,26 @@ export class UserProfileComponent implements OnInit {
     });
   }
 
+  handleUploadImage() {
+    const dialogRef = this.dialog.open(ProfilePictureComponent, {
+      height: '55%',
+      width: '60%',
+      data: {
+        user: this.userInfo
+      },
+      restoreFocus: false
+    });
+
+    dialogRef.afterClosed().subscribe(() => {
+      this.getUserById();
+    });
+  }
+
   handleUpdateProfile() {
     try {
       let objUser = Object.assign({}, this.userForm.value);
       objUser.isProfileCompleted = true;
+
       this.userService.updateUser(objUser).subscribe((res: Response) => {
         this.snackBar.openSnackBar(res?.message!, 'Close', 'green-snackbar');
         this.router.navigate(['/dashboard']);

@@ -3,6 +3,7 @@ export class URLConstants {
     public static AUTHENTICATE_API: string = 'v1/users/authenticate';
     public static REGISTER_USER_API: string = 'v1/users/register';
     public static UPDATE_USER_API: string = 'v1/users/update';
+    public static UPLOAD_PROFILE_PIC_API: string = 'v1/users/uploadProfilePicture';
     public static GET_USERS_API: string = 'v1/users/getAll';
     public static GET_SEEKERS_API: string = 'v1/users/getAllSeekers';
     public static GET_UNVERIFIED_USERS_API: string = 'v1/users/getUnverifiedUsers';

@@ -3,15 +3,15 @@
   <div class="container" style="height: 100%" *ngIf="ROLES.MENTOR == role; else seekerContent">
     <div class="d-flex align-items-center justify-content-between" style="height: 100%">
       <div class="row">
-        <div class="col-sm-4">
+        <div class="col-sm-6">
           <h2>Welcome, {{userName}}!</h2>
-          <p>
+          <!-- <p>
             It is potential analysis framework specially designed to identify identification of personality type
-          </p>
+          </p> -->
           <button mat-raised-button color="primary" class="mt-5 full-width large-button rounded-corner"
             routerLink="/user/user-profile" *ngIf="!userInfo?.isProfileCompleted">Complete Profile</button>
         </div>
-        <div class="col-sm-8 d-flex flex-column align-items-center justify-content-center" style="height: 100%">
+        <div class="col-sm-6 d-flex flex-column align-items-center justify-content-center" style="height: 100%">
           <ng-container *ngIf="!isNotificationsAvailable; else notificationsAvailable">
             <h6><strong>Notifications</strong></h6>
             <p>No new communications</p>
@@ -35,19 +35,8 @@
 </ng-template>
 
 <ng-template #seekerContent>
-  <div class="container">
+  <div class="container text-center">
     <h2>Welcome, {{userName}}!</h2>
-    <div class="row mt-4">
-      <div class="col-sm-12">
-        <mat-form-field appearance="fill">
-          <mat-label>Search</mat-label>
-          <input matInput type="text" [formControl]="search" placeholder="e.g. Mathematics">
-        </mat-form-field>
-      </div>
-    </div>
-    <p>
-      Topics which you might be interested in
-    </p>
     <app-topic></app-topic>
   </div>
 </ng-template>

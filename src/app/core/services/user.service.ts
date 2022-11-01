@@ -1,5 +1,6 @@
 import { Injectable } from '@angular/core';
 import { BehaviorSubject, ReplaySubject } from 'rxjs';
+import { HttpHeaders } from '@angular/common/http';
 
 import { HttpService } from 'src/app/core/services/http.service';
 import { URLConstants } from 'src/app/core/constants/url-constants';
@@ -42,6 +43,15 @@ export class UserService {
 
   getUnverifiedUsers() {
     return this.httpService.get(URLConstants.GET_UNVERIFIED_USERS_API);
+  }
+
+  uploadProfilePicture(payload: any) {
+    let httpOptions = {
+      headers: new HttpHeaders({
+        "Accept": "application/json"
+      })
+    }
+    return this.httpService.put(URLConstants.UPLOAD_PROFILE_PIC_API, payload, httpOptions);
   }
 
   updateUser(payload: any) {

@@ -64,6 +64,7 @@ export class CommunicationComponent implements OnInit {
   markCommunicationsAsSeen() {
     const payload = { createdBy: this.senderId };
     this.communicationService.markCommunicationsAsSeen(payload).subscribe((res: Response) => {
+      this.communicationService.notificationsUpdated(true);
     });
   }
 

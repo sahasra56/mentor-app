@@ -27,11 +27,11 @@ export class HttpService {
       .pipe(catchError(this.formatErrors.bind(this)));
   }
 
-  post(path: string, body: any): Observable<any> {
+  post(path: string, body: any, httpOptions: any = {}): Observable<any> {
     let baseUrl = environment.baseUrl;
     return this.http.post(
       `${baseUrl}${path}`,
-      body
+      body, httpOptions
     ).pipe(catchError(this.formatErrors.bind(this)));
   }
 
@@ -44,11 +44,11 @@ export class HttpService {
     ).pipe(catchError(this.formatErrors.bind(this)));
   }
 
-  put(path: string, body: any): Observable<any> {
+  put(path: string, body: any, httpOptions: any = {}): Observable<any> {
     let baseUrl = environment.baseUrl;
     return this.http.put(
       `${baseUrl}${path}`,
-      body
+      body, httpOptions
     ).pipe(catchError(this.formatErrors.bind(this)));
   }
 
