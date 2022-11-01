@@ -58,6 +58,7 @@ export class ProfilePictureComponent implements OnInit {
     this.isLoading = true;
     this.userService.uploadProfilePicture(data).subscribe((res: Response) => {
       this.snackBar.openSnackBar(res?.message!, 'Close', 'green-snackbar');
+      this.userService.profilePicUploaded(true);
       this.dialogRef.close();
       this.isLoading = false;
     });

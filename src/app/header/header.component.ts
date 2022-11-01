@@ -22,6 +22,7 @@ export class HeaderComponent implements OnInit {
   notificationCount!: number;
   notification$!: any;
   isNotificationsAvailable: boolean = true;
+  profilePicUploadSubscription!: any;
 
   constructor(
     private authService: AuthService,
@@ -41,6 +42,11 @@ export class HeaderComponent implements OnInit {
         // this.getUserNotifications();
       }
     });
+
+    this.profilePicUploadSubscription = this.userService.getProfilePicUploadEmitter()
+      .subscribe(() => {
+        this.getUserDetails();
+      });
   }
 
   getUserDetails() {

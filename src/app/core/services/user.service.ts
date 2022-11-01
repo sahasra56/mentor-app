@@ -1,4 +1,4 @@
-import { Injectable } from '@angular/core';
+import { EventEmitter, Injectable } from '@angular/core';
 import { BehaviorSubject, ReplaySubject } from 'rxjs';
 import { HttpHeaders } from '@angular/common/http';
 
@@ -16,6 +16,8 @@ export class UserService {
 
   private isAuthenticatedSubject = new ReplaySubject<boolean>(1);
   public isAuthenticated = this.isAuthenticatedSubject.asObservable();
+
+  picUpload: EventEmitter<boolean> = new EventEmitter();
 
   constructor(
     private httpService: HttpService
@@ -76,6 +78,14 @@ export class UserService {
 
   getMentorsByTopicId(topicId: number) {
     return this.httpService.get(URLConstants.GET_MENTORS_BY_TOPIC_ID_API + `/${topicId}`);
+  }
+
+  profilePicUploaded(picUploaded: boolean) {
+    this.picUpload.emit(picUploaded);
+  }
+
+  getProfilePicUploadEmitter() {
+    return this.picUpload;
   }
 
 }
