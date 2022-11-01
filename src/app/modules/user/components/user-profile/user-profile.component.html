@@ -6,7 +6,7 @@
 <div class="d-flex justify-content-center pointer">
     <div class="circle" (click)="handleUploadImage();">
         <span *ngIf="userInfo?.profilePicDetails?.Location!; else userInitials">
-            <img [src]="userInfo?.profilePicDetails.Location!" alt="Profile pic of user" class="rounded-circle"
+            <img [src]="userInfo.profilePicDetails.Location!" alt="Profile pic of user" class="rounded-circle"
                 height="98" width="98">
         </span>
         <ng-template #userInitials>
