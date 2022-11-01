@@ -11,6 +11,7 @@
         <a style="margin-left: 15px;" routerLink="/contact-us" routerLinkActive="active-link">Contact Us</a>
         <a style="margin-left: 15px;" routerLink="/about-us" routerLinkActive="active-link">About Us</a>
         <a style="margin-left: 15px;" routerLink="/topic" routerLinkActive="active-link" *ngIf="userInfo?.role === 1">Topic</a>
+        <a style="margin-left: 15px;" routerLink="/verification" routerLinkActive="active-link" *ngIf="userInfo?.role === 1">Verification</a>
         <span class="example-spacer"></span>
         <span></span>
         <!-- <button mat-icon-button aria-label="Example icon-button with a notification" class="mr-3"
@@ -18,7 +19,6 @@
             <mat-icon [matBadge]="notificationCount" matBadgeColor="warn">notifications</mat-icon>
         </button> -->
         <button mat-icon-button [matMenuTriggerFor]="menu" aria-label="Example icon-button with a menu">
-            <!-- <img [src]="userInfo?.profilePicDetails?.Location!" class="rounded-circle" height="40" width="40"/> -->
             <span *ngIf="userInfo?.profilePicDetails?.Location!; else userInitials">
                 <img [src]="userInfo.profilePicDetails.Location!" alt="Profile pic of user" class="rounded-circle"
                     height="40" width="40">

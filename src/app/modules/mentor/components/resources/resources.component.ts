@@ -15,6 +15,7 @@ export interface DialogData {
 export class ResourcesComponent implements OnInit {
 
   topicInfo!: Topic;
+  resourcesAvailable: boolean = true;
 
   constructor(
     public dialogRef: MatDialogRef<ResourcesComponent>,
@@ -22,6 +23,7 @@ export class ResourcesComponent implements OnInit {
   ) {
     console.log('resourceData', resourceData);
     this.topicInfo = resourceData.topicInfo;
+    this.resourcesAvailable = this.topicInfo.resources!.length > 0 || false;
   }
 
   ngOnInit(): void {
