@@ -25,7 +25,7 @@
         <button mat-icon-button [matMenuTriggerFor]="menu" aria-label="Example icon-button with a menu">
             <!-- <img [src]="userInfo?.profilePicDetails?.Location!" class="rounded-circle" height="40" width="40"/> -->
             <span *ngIf="userInfo?.profilePicDetails?.Location!; else userInitials">
-                <img [src]="userInfo?.profilePicDetails?.Location!" alt="Profile pic of user" class="rounded-circle"
+                <img [src]="userInfo?.profilePicDetails.Location!" alt="Profile pic of user" class="rounded-circle"
                     height="40" width="40">
             </span>
             <ng-template #userInitials>
