@@ -26,12 +26,14 @@ export class UserProfileComponent implements OnInit {
 
   userInfo!: User;
   userName!: string;
+  userInitialName!: string;
   role!: any;
   ROLES = User.roles;
   userForm!: FormGroup;
   topics$!: Topic[];
 
   roles = [
+    { id: 1, name: 'Admin' },
     { id: 2, name: 'Mentor' },
     { id: 3, name: 'Seeker' }
   ];
@@ -70,6 +72,7 @@ export class UserProfileComponent implements OnInit {
     this.userService.getUserById(this.userInfo._id!).subscribe((res: Response) => {
       this.userInfo = res?.data;
       this.userName = `${this.userInfo!.name!.firstName} ${this.userInfo!.name!.lastName}`;
+      this.userInitialName = this.userInfo!.name!.firstName.charAt(0) + this.userInfo!.name!.lastName.charAt(0);
       this.role = this.roles.find((e) => e.id === this.userInfo.role);
       this.initializeForm();
       if (this.userInfo.role === this.ROLES.MENTOR) {

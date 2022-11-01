@@ -16,6 +16,7 @@ export class HeaderComponent implements OnInit {
 
   applicationName: string = Constants.applicationName;
   userName!: string;
+  userInitialName!: string;
   userInfo!: User;
   isLoggedIn$!: Observable<boolean>;
   notificationCount!: number;
@@ -46,6 +47,7 @@ export class HeaderComponent implements OnInit {
     this.userService.authMe().subscribe((res: Response) => {
       this.userInfo = res?.data;
       this.userName = `${this.userInfo?.name?.firstName} ${this.userInfo?.name?.lastName}`;
+      this.userInitialName = this.userInfo!.name!.firstName.charAt(0) + this.userInfo!.name!.lastName.charAt(0);
       // this.userInfo.profilePicUrl = this.domSanitizer.bypassSecurityTrustUrl('data:image/jpeg;base64,' + this.userInfo?.profilePicUrl!);
       console.log('this.userInfo.profilePicUrl', this.userInfo.profilePicUrl);
     });

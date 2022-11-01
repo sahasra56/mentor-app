@@ -18,6 +18,7 @@ export class ProfilePictureComponent implements OnInit {
   fileToUpload: any;
   imageUrl: any;
   @ViewChild('fileUpload') fileUpload: ElementRef | undefined;
+  isLoading: boolean = false;
 
   constructor(
     public dialogRef: MatDialogRef<ProfilePictureComponent>,
@@ -54,10 +55,11 @@ export class ProfilePictureComponent implements OnInit {
     const data = new FormData();
     data.append('file', this.fileToUpload);
     data.append('_id', this.userData.user._id);
-    
+    this.isLoading = true;
     this.userService.uploadProfilePicture(data).subscribe((res: Response) => {
       this.snackBar.openSnackBar(res?.message!, 'Close', 'green-snackbar');
       this.dialogRef.close();
+      this.isLoading = false;
     });
   }
 }

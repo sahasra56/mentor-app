@@ -3,8 +3,16 @@
     <p>Complete your profile</p>
 </div>
 
-<div class="d-flex justify-content-center pointer" (click)="handleUploadImage();">
-    <div class="circle"></div>
+<div class="d-flex justify-content-center pointer">
+    <div class="circle" (click)="handleUploadImage();">
+        <span *ngIf="userInfo?.profilePicDetails?.Location!; else userInitials">
+            <img [src]="userInfo?.profilePicDetails?.Location!" alt="Profile pic of user" class="rounded-circle"
+                height="98" width="98">
+        </span>
+        <ng-template #userInitials>
+            <h2 class="d-flex align-items-center justify-content-center" style="height: 100%">{{userInitialName}}</h2>
+        </ng-template>
+    </div>
 </div>
 
 <div class="row d-flex justify-content-center">
