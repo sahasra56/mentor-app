@@ -4,5 +4,6 @@ export interface Topic extends Common {
   _id?: number;
   name?: string;
   description?: string;
+  imageUrl?: string;
   selected?: boolean;
 }

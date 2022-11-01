@@ -13,7 +13,7 @@
     <div class="col-sm-6 col-md-4 mb-4" *ngFor="let topic of topics$">
         <div class="card d-flex align-items-center justify-content-center"
             [routerLink]="['/mentor/mentor-list', topic._id]">
-            <img src="assets/images/task.png" class="img-fluid" height="200px" width="200px">
+            <img [src]="topic?.imageUrl" class="img-fluid" height="200px" width="200px">
             <br>
             <strong>{{(topic?.name || '') | ellipsis: 20}}</strong>
         </div>
