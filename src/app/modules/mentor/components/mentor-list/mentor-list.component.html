@@ -10,6 +10,8 @@
                 <p><strong>{{mentor?.name?.firstName}} {{mentor?.name?.lastName}}</strong></p>
                 <p>{{mentor?.email}}</p>
                 <p>{{mentor?.mobileNumber ? mentor?.mobileNumber : '--'}}</p>
+                <p>{{mentor?.docUrl ? mentor?.docUrl : '--'}}</p>
+                <p>{{mentor?.topics ? mentor?.topics : '--'}}</p>
                 <button mat-stroked-button type="button" color="primary"
                     [routerLink]="['/communication/mentor', topicId, mentor._id]">
                     Message
