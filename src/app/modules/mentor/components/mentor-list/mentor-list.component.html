@@ -2,8 +2,8 @@
 
 <ng-template #noLoading>
     <div class="text-center">
-        <h4>Mentor | {{topicInfo?.name}}</h4>
-        <p>{{topicInfo?.description}}</p>
+        <h4>Mentor | {{topicInfo.name}}</h4>
+        <p>{{topicInfo.description}}</p>
         <a mat-raised-button color="primary" (click)="handleLearnMore();">Learn More</a>
     </div>
     <div class="row mt-2 pb-2 mb-2" *ngIf="mentors$?.length; else noMentor">
