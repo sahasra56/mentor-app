@@ -5,7 +5,10 @@
                 <br>
                 First Things First...
             </h2>
-            <p>Consequat adipisicing ea do labore irure adipisicing occaecat cupidatat excepteur duis mo</p>
+            <p>
+                Create an account, as a mentor or seeker, the mentors will have to be verified by admin before getting
+                started. The seekers will be able to join our Oraculi community as soon as they sign-up
+            </p>
         </div>
         <div class="col-sm-5">
             <div class="card">
@@ -16,15 +19,16 @@
                         <div class="form-group" class="mb-3">
                             <!-- <div class="row d-flex flex-column justify-content-center">
                                 <div class="col-md-12"> -->
-                                    <mat-radio-group aria-label="Select an option" formControlName="role">
-                                        <mat-radio-button class="card" style="margin-left: 1rem; margin-right: 1rem;" *ngFor="let role of roles; let i = index;" [value]="role?.id"
-                                            (change)="handleRoleSelection()">
-                                            <!-- <div class="card mb-2"> -->
-                                                {{role?.name}}
-                                            <!-- </div> -->
-                                        </mat-radio-button>
-                                    </mat-radio-group>
-                                <!-- </div>
+                            <mat-radio-group aria-label="Select an option" formControlName="role">
+                                <mat-radio-button class="card" style="margin-left: 1rem; margin-right: 1rem;"
+                                    *ngFor="let role of roles; let i = index;" [value]="role?.id"
+                                    (change)="handleRoleSelection()">
+                                    <!-- <div class="card mb-2"> -->
+                                    {{role?.name}}
+                                    <!-- </div> -->
+                                </mat-radio-button>
+                            </mat-radio-group>
+                            <!-- </div>
                             </div> -->
                         </div>
                         <div class="form-group" formGroupName="name">

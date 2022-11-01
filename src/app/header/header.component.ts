@@ -37,7 +37,7 @@ export class HeaderComponent implements OnInit {
     this.authService.isLoggedIn.subscribe((res: any) => {
       if (res) {
         this.getUserDetails();
-        this.getUserNotifications();
+        // this.getUserNotifications();
       }
     });
   }
