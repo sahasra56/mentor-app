@@ -25,4 +25,8 @@ export class TopicService {
   createTopic(payload: Topic) {
     return this.httpService.post(URLConstants.CREATE_TOPIC_API, payload);
   }
+  
+  updateTopic(payload: Topic) {
+    return this.httpService.put(URLConstants.UPDATE_TOPIC_API, payload);
+  }
 }

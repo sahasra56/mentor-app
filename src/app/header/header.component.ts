@@ -32,16 +32,17 @@ export class HeaderComponent implements OnInit {
 
   ngOnInit(): void {
     this.initiateSubscriptions();
+    this.getUserDetails();
   }
 
   initiateSubscriptions() {
     this.isLoggedIn$ = this.authService.isLoggedIn;
-    this.authService.isLoggedIn.subscribe((res: any) => {
-      if (res) {
-        this.getUserDetails();
-        // this.getUserNotifications();
-      }
-    });
+    // this.authService.isLoggedIn.subscribe((res: any) => {
+    //   if (res) {
+    //     this.getUserDetails();
+    //     // this.getUserNotifications();
+    //   }
+    // });
 
     this.profilePicUploadSubscription = this.userService.getProfilePicUploadEmitter()
       .subscribe(() => {
@@ -54,8 +55,6 @@ export class HeaderComponent implements OnInit {
       this.userInfo = res?.data;
       this.userName = `${this.userInfo?.name?.firstName} ${this.userInfo?.name?.lastName}`;
       this.userInitialName = this.userInfo!.name!.firstName.charAt(0) + this.userInfo!.name!.lastName.charAt(0);
-      // this.userInfo.profilePicUrl = this.domSanitizer.bypassSecurityTrustUrl('data:image/jpeg;base64,' + this.userInfo?.profilePicUrl!);
-      console.log('this.userInfo.profilePicUrl', this.userInfo.profilePicUrl);
     });
   }
 

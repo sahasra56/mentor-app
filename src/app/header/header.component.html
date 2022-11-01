@@ -10,6 +10,7 @@
         <!-- <a style="margin-left: 15px;" routerLink="/personality-test" routerLinkActive="active-link">Take a Personality Test</a> -->
         <a style="margin-left: 15px;" routerLink="/contact-us" routerLinkActive="active-link">Contact Us</a>
         <a style="margin-left: 15px;" routerLink="/about-us" routerLinkActive="active-link">About Us</a>
+        <a style="margin-left: 15px;" routerLink="/topic" routerLinkActive="active-link" *ngIf="userInfo?.role === 1">Topic</a>
         <span class="example-spacer"></span>
         <span></span>
         <!-- <button mat-icon-button aria-label="Example icon-button with a notification" class="mr-3"

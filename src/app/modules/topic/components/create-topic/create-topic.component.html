@@ -1,0 +1,59 @@
+<div class="container text-center">
+    <h2>Add/Update Topic</h2>
+
+    <form class="mt-2" [formGroup]="topicForm" novalidate (ngSubmit)="handleSaveTopic();">
+        <mat-form-field class="example-form-field mt-2" appearance="fill">
+            <mat-label>Topic Name</mat-label>
+            <input matInput type="text" formControlName="name">
+        </mat-form-field>
+
+        <mat-form-field class="example-form-field mt-2" appearance="fill">
+            <mat-label>Topic Description</mat-label>
+            <textarea matInput type="text" formControlName="description" rows="4"></textarea>
+        </mat-form-field>
+
+        <p>Resources</p>
+        <div class="row">
+            <div class="col-md-5">
+                <mat-form-field class="example-form-field" appearance="fill">
+                    <mat-label>Resorce Title</mat-label>
+                    <input matInput type="text" [formControl]="title" />
+                </mat-form-field>
+            </div>
+            <div class="col-md-5">
+                <mat-form-field class="example-form-field" appearance="fill">
+                    <mat-label>Resorce Link</mat-label>
+                    <input matInput type="text" [formControl]="link" />
+                </mat-form-field>
+            </div>
+            <div class="col-md-2">
+                <button mat-raised-button type="button" color="primary" class="large-button full-width"
+                    [disabled]="!title.value.trim() || !link.value.trim()" (click)="handleAddResource();">
+                    Add Resource
+                </button>
+            </div>
+        </div>
+
+        <mat-chip-list aria-label="Resource selection" class="mt-2">
+            <mat-chip *ngFor="let resource of resources; let i = index;" color="primary">{{resource?.title}}
+                <button matChipRemove (click)="handleRemoveResource(i);">
+                    <mat-icon>cancel</mat-icon>
+                </button>
+            </mat-chip>
+        </mat-chip-list>
+        <hr>
+        <div class="row d-flex justify-content-end">
+            <div class="col-sm-2">
+                <button mat-raised-button type="button" class="large-button full-width" routerLink="/topic">
+                    Cancel
+                </button>
+            </div>
+            <div class="col-sm-4">
+                <button mat-raised-button type="submit" class="large-button full-width" color="primary"
+                    [disabled]="topicForm.invalid || !topicForm.dirty">
+                    Update
+                </button>
+            </div>
+        </div>
+    </form>
+</div>

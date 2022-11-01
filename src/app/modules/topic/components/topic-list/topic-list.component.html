@@ -1,0 +1,12 @@
+<div>
+    <h4 class="text-center">Topics</h4>
+
+    <div class="row mt-4">
+        <div class="col-sm-4 mb-4" *ngFor="let topic of topics$">
+            <div class="card pointer"
+                [routerLink]="['../create-topic', topic._id]">
+                <strong>{{(topic?.name || '') | ellipsis: 20}}</strong>
+            </div>
+        </div>
+    </div>
+</div>
