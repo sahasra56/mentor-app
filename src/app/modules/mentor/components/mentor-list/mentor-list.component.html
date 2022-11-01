@@ -11,7 +11,11 @@
                 <p>{{mentor?.email}}</p>
                 <p>{{mentor?.mobileNumber ? mentor?.mobileNumber : '--'}}</p>
                 <p>{{mentor?.docUrl ? mentor?.docUrl : '--'}}</p>
-                <p>{{mentor?.topics ? mentor?.topics : '--'}}</p>
+                <p>
+                    <span *ngFor="let topic of mentor.topics">
+                        {{topic?.name}},
+                    </span>
+                </p>
                 <button mat-stroked-button type="button" color="primary"
                     [routerLink]="['/communication/mentor', topicId, mentor._id]">
                     Message
