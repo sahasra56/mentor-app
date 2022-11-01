@@ -32,17 +32,16 @@ export class HeaderComponent implements OnInit {
 
   ngOnInit(): void {
     this.initiateSubscriptions();
-    this.getUserDetails();
   }
 
   initiateSubscriptions() {
     this.isLoggedIn$ = this.authService.isLoggedIn;
-    // this.authService.isLoggedIn.subscribe((res: any) => {
-    //   if (res) {
-    //     this.getUserDetails();
-    //     // this.getUserNotifications();
-    //   }
-    // });
+    this.authService.isLoggedIn.subscribe((res: any) => {
+      if (res) {
+        this.getUserDetails();
+        // this.getUserNotifications();
+      }
+    });
 
     this.profilePicUploadSubscription = this.userService.getProfilePicUploadEmitter()
       .subscribe(() => {
